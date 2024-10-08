@@ -7,9 +7,10 @@
 from connectors.core.connector import Connector, get_logger, ConnectorError
 from .operations import check_health, aws_operations
 
-logger = get_logger('aws')
+logger = get_logger('aws-commands')
 
-class AWS(Connector):
+
+class AWSCommands(Connector):
     def execute(self, config, operation, params, **kwargs):
         try:
             logger.info('In execute() Operation:[{}]'.format(operation))

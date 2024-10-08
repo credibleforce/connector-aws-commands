@@ -10,7 +10,7 @@ from .network_acl_actions import *
 from .utils import _get_aws_client, _change_date_format, _is_mfa_device, _get_user_policies, _get_user_groups_details, \
     _get_temp_credentials, _get_list_from_str_or_list, _get_group_ids, _get_aws_resource
 
-logger = get_logger('aws')
+logger = get_logger('aws-commands')
 TEMP_CRED_ENDPOINT = 'http://169.254.169.254/latest/meta-data/iam/security-credentials/{}'
 
 
@@ -27,13 +27,16 @@ def describe_user(config, params):
         result.update({'UserID': aws_response['User']['UserId']})
         result.update({'CreateDate': aws_response['User']['CreateDate']})
         if 'PasswordLastUsed' in aws_response['User'].keys():
-            result.update({'PasswordLastUsed': aws_response['User']['PasswordLastUsed']})
+            result.update(
+                {'PasswordLastUsed': aws_response['User']['PasswordLastUsed']})
         # MFA Device
         result.update({'MFADevices': _is_mfa_device(aws_client, username)})
         # User Policies
-        result.update({'UserPolicies': _get_user_policies(aws_client, username)})
+        result.update(
+            {'UserPolicies': _get_user_policies(aws_client, username)})
         # Groups_Details
-        result.update({'UserGroups': _get_user_groups_details(username, aws_client)})
+        result.update(
+            {'UserGroups': _get_user_groups_details(username, aws_client)})
         return result
     except Exception as Err:
         logger.exception(Err)
@@ -47,14 +50,16 @@ def check_health(config):
             if _get_temp_credentials(config):
                 return True
             else:
-                logger.error('Invalid Role. Please verify is the role is associated to your instance.')
-                raise ConnectorError('Invalid Role. Please verify is the role is associated to your instance.')
+                logger.error(
+                    'Invalid Role. Please verify is the role is associated to your instance.')
+                raise ConnectorError(
+                    'Invalid Role. Please verify is the role is associated to your instance.')
         else:
             aws_access_key = config.get('aws_access_key')
             aws_region = config.get('aws_region')
             aws_secret_access_key = config.get('aws_secret_access_key')
             # aws_access_key, aws_region, aws_secret_access_key = _get_credentials_from_config(config)
-            client = boto3.client('sts', region_name= aws_region, aws_access_key_id=aws_access_key,
+            client = boto3.client('sts', region_name=aws_region, aws_access_key_id=aws_access_key,
                                   aws_secret_access_key=aws_secret_access_key)
             account_id = client.get_caller_identity()["Account"]
             if account_id:
@@ -62,7 +67,8 @@ def check_health(config):
             else:
                 logger.error(
                     'Invalid Region name or Aws Access Key ID or Aws Secret Access Key')
-                raise ConnectorError('Invalid Region name or Aws Access Key ID or Aws Secret Access Key')
+                raise ConnectorError(
+                    'Invalid Region name or Aws Access Key ID or Aws Secret Access Key')
     except Exception as Err:
         logger.exception(Err)
         raise ConnectorError(Err)
@@ -71,7 +77,8 @@ def check_health(config):
 def describe_instance(config, params):
     try:
         aws_client = _get_aws_client(config, params, 'ec2')
-        aws_response = aws_client.describe_instances(InstanceIds=[params.get('instance_id')])
+        aws_response = aws_client.describe_instances(
+            InstanceIds=[params.get('instance_id')])
         # aws_response = aws_client.describe_instances(MaxResults=30)
         aws_response = json.dumps(aws_response, default=_change_date_format)
         return json.loads(aws_response)
@@ -85,7 +92,8 @@ def detach_instance_from_autoscaling_group(config, params):
         aws_client = _get_aws_client(config, params, 'autoscaling')
         autoscaling_group_name = params.get('autoscaling_group_name')
         instance_id_list = _get_list_from_str_or_list(params, "instance_id")
-        aws_response = aws_client.describe_auto_scaling_instances(InstanceIds=instance_id_list)
+        aws_response = aws_client.describe_auto_scaling_instances(
+            InstanceIds=instance_id_list)
         AutoScalingInstances_list = list(
             map(lambda group: group['AutoScalingGroupName'], aws_response['AutoScalingInstances']))
         # First Check Instance is Associate with Auto Scalding Group or Not.
@@ -163,7 +171,8 @@ def add_security_group_to_instance(config, params):
         if group_ids != []:
             aws_response = aws_client.modify_instance_attribute(DryRun=False, InstanceId=params.get('instance_id'),
                                                                 Groups=group_ids)
-            aws_response = json.dumps(aws_response, default=_change_date_format)
+            aws_response = json.dumps(
+                aws_response, default=_change_date_format)
             aws_response = json.loads(aws_response)
             result.update({"Response": aws_response})
             return result
@@ -198,8 +207,10 @@ def deregister_instance_from_elb(config, params):
         instance_id_list = _get_list_from_str_or_list(params, "instance_id")
         if elb_name and instance_id_list:
             # Create List of dict For. Eg. [{'InstanceId': 'i-d6f6fae3',},{'InstanceId': 'i-207d9717',},{'InstanceId': 'i-afefb49b',},]
-            instances = list(map(lambda instance_id: {'InstanceId': instance_id}, instance_id_list))
-            response = aws_client.describe_instance_health(LoadBalancerName=elb_name, Instances=instances)
+            instances = list(
+                map(lambda instance_id: {'InstanceId': instance_id}, instance_id_list))
+            response = aws_client.describe_instance_health(
+                LoadBalancerName=elb_name, Instances=instances)
             if len(response['InstanceStates']) < 1:
                 logger.exception(
                     'Instance ID {0} is Not Connected to ELB Name : {1}'.format(str(instance_id_list), elb_name))
@@ -209,8 +220,10 @@ def deregister_instance_from_elb(config, params):
                 return aws_client.deregister_instances_from_load_balancer(LoadBalancerName=elb_name,
                                                                           Instances=instances)
         else:
-            logger.exception('ELB Name {0} or Instance ID {1} are Empty'.format(elb_name, str(instance_id_list)))
-            raise ConnectorError('ELB Name {0} or Instance ID {1} are Empty'.format(elb_name, str(instance_id_list)))
+            logger.exception('ELB Name {0} or Instance ID {1} are Empty'.format(
+                elb_name, str(instance_id_list)))
+            raise ConnectorError('ELB Name {0} or Instance ID {1} are Empty'.format(
+                elb_name, str(instance_id_list)))
     except Exception as Err:
         logger.exception(Err)
         raise ConnectorError(Err)
@@ -222,12 +235,15 @@ def register_instance_to_elb(config, params):
         elb_name = params.get('elb_name')
         instance_id_list = _get_list_from_str_or_list(params, "instance_id")
         # Create List of dict For. Eg. [{'InstanceId': 'i-d6f6fae3',},{'InstanceId': 'i-207d9717',},{'InstanceId': 'i-afefb49b',},]
-        instances = list(map(lambda instance_id: {'InstanceId': instance_id}, instance_id_list))
+        instances = list(
+            map(lambda instance_id: {'InstanceId': instance_id}, instance_id_list))
         if elb_name and instance_id_list:
             return aws_client.register_instances_with_load_balancer(LoadBalancerName=elb_name, Instances=instances)
         else:
-            logger.exception('ELB Name {0} or Instance ID {1} are Empty'.format(elb_name, str(instance_id_list)))
-            raise ConnectorError('ELB Name {0} or Instance ID {1} are Empty'.format(elb_name, str(instance_id_list)))
+            logger.exception('ELB Name {0} or Instance ID {1} are Empty'.format(
+                elb_name, str(instance_id_list)))
+            raise ConnectorError('ELB Name {0} or Instance ID {1} are Empty'.format(
+                elb_name, str(instance_id_list)))
     except Exception as Err:
         logger.exception(Err)
         raise ConnectorError(Err)
@@ -237,7 +253,8 @@ def start_instance(config, params):
     try:
         aws_resource = _get_aws_resource(config, params, 'ec2')
         instance = aws_resource.Instance(params.get('instance_id'))
-        aws_response = instance.start(DryRun=False, AdditionalInfo=str(params.get('description')))
+        aws_response = instance.start(
+            DryRun=False, AdditionalInfo=str(params.get('description')))
         return aws_response
     except Exception as Err:
         logger.exception(Err)
@@ -283,9 +300,10 @@ def get_details_for_all_images(config, params):
         logger.info('params are = {}'.format(params))
         logger.info('filetr is  ={}'.format(params.get('filters', [])))
         aws_response = aws_client.describe_images(ExecutableUsers=params.get('executable_users')
-        if params.get('executable_users') else [],Filters=params.get('filters') if params.get('filters') else [],
-                                                  ImageIds=params.get('image_ids') if params.get('image_ids') else [],
-                                                  Owners=params.get('owners') if params.get('owners') else [])
+                                                  if params.get('executable_users') else [], Filters=params.get('filters') if params.get('filters') else [],
+                                                  ImageIds=params.get('image_ids') if params.get(
+            'image_ids') else [],
+            Owners=params.get('owners') if params.get('owners') else [])
         return aws_response
     except Exception as Err:
         logger.exception(Err)
@@ -343,8 +361,10 @@ def launch_instance(config, params):
                 "ResourceType": "instance",
                 "Tags": [
                     {"Key": "purpose", "Value": str(params.get('purpose'))},
-                    {"Key": "customer_name", "Value": str(params.get('customer_name'))},
-                    {"Key": "terminate_by_date", "Value": str(params.get('terminate_by_date'))}
+                    {"Key": "customer_name", "Value": str(
+                        params.get('customer_name'))},
+                    {"Key": "terminate_by_date", "Value": str(
+                        params.get('terminate_by_date'))}
                 ]
             }
         ]
@@ -358,7 +378,8 @@ def launch_instance(config, params):
         ]
         input_params.update({"BlockDeviceMappings": BlockDeviceMappings})
         input_params.update({"TagSpecifications": TagSpecifications}),
-        security_groups_list = _get_list_from_str_or_list(params, "security_groups_list")
+        security_groups_list = _get_list_from_str_or_list(
+            params, "security_groups_list")
         if security_groups_list:
             input_params.update({"SecurityGroupIds": security_groups_list})
         aws_response = aws_resource.create_instances(**input_params)
@@ -391,7 +412,8 @@ def authorize_ingress(config, params):
 def revoke_egress(config, params):
     try:
         aws_client = _get_aws_resource(config, params, 'ec2')
-        security_group = aws_client.SecurityGroup(params.get('security_group_id'))
+        security_group = aws_client.SecurityGroup(
+            params.get('security_group_id'))
         return security_group.revoke_egress(GroupId=params.get('security_group_id'), DryRun=False,
                                             IpPermissions=params.get('ip_permissions'))
     except Exception as Err:
@@ -402,7 +424,8 @@ def revoke_egress(config, params):
 def revoke_ingress(config, params):
     try:
         aws_client = _get_aws_resource(config, params, 'ec2')
-        security_group = aws_client.SecurityGroup(params.get('security_group_id'))
+        security_group = aws_client.SecurityGroup(
+            params.get('security_group_id'))
         return security_group.revoke_ingress(GroupId=params.get('security_group_id'), DryRun=False,
                                              IpPermissions=params.get('ip_permissions'))
     except Exception as Err:
@@ -484,6 +507,6 @@ aws_operations = {
     'describe_network_acls': describe_network_acls,
     'create_network_acl': create_network_acl,
     'delete_network_acl': delete_network_acl,
-    'delete_network_acl_rule':delete_network_acl_rule,
+    'delete_network_acl_rule': delete_network_acl_rule,
     'add_network_acl_rule': add_network_acl_rule,
 }
