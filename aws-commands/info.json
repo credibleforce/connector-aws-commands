@@ -8,8 +8,8 @@
   "version": "1.0.0",
   "category": "AWS Service",
   "help_online": "https://docs.fortinet.com/document/fortisoar/1.0.0/aws-ec2/88/aws-commands-v1-0-0",
-  "icon_small_name": "AWS-EC2_small.png",
-  "icon_large_name": "AWS-EC2_large.png",
+  "icon_small_name": "AWS_small.png",
+  "icon_large_name": "AWS_large.png",
   "configuration": {
     "fields": [
       {
@@ -35,7 +35,10 @@
               "type": "text",
               "name": "aws_iam_role",
               "tooltip": "IAM Role of your AWS instance to access AWS services.",
-              "description": "IAM Role of your AWS instance to access AWS services."
+              "description": "IAM Role of your AWS instance to access AWS services.",
+              "isOnChange": true,
+              "onChangeParam": "Configuration Type",
+              "onChangeOption": "IAM Role"
             }
           ],
           "Access Credentials": [
@@ -47,8 +50,11 @@
               "type": "text",
               "name": "aws_region",
               "placeholder": "e.g. us-east-2",
-              "tooltip": "Your account's AWS region that you will use to access AWS services.",
-              "description": "Your account's AWS region that you will use to access AWS services."
+              "tooltip": "Your account\u0027s AWS region that you will use to access AWS services.",
+              "description": "Your account\u0027s AWS region that you will use to access AWS services.",
+              "isOnChange": true,
+              "onChangeParam": "Configuration Type",
+              "onChangeOption": "Access Credentials"
             },
             {
               "title": "AWS Access Key ID",
@@ -58,7 +64,10 @@
               "type": "text",
               "name": "aws_access_key",
               "tooltip": "ID of the AWS Access Key to access AWS services.",
-              "description": "ID of the AWS Access Key to access AWS services."
+              "description": "ID of the AWS Access Key to access AWS services.",
+              "isOnChange": true,
+              "onChangeParam": "Configuration Type",
+              "onChangeOption": "Access Credentials"
             },
             {
               "title": "AWS Secret Access Key",
@@ -68,10 +77,14 @@
               "type": "password",
               "name": "aws_secret_access_key",
               "tooltip": "Key of the AWS Secret Access to access AWS services.",
-              "description": "Key of the AWS Secret Access to access AWS services."
+              "description": "Key of the AWS Secret Access to access AWS services.",
+              "isOnChange": true,
+              "onChangeParam": "Configuration Type",
+              "onChangeOption": "Access Credentials"
             }
           ]
-        }
+        },
+        "isOnChange": false
       }
     ]
   },
@@ -83,7 +96,6 @@
       "category": "investigation",
       "annotation": "generic_command",
       "enabled": true,
-      "output_schema": {},
       "onchange": {
         "true": [
           {
@@ -94,8 +106,8 @@
             "type": "text",
             "name": "aws_region",
             "placeholder": "e.g. us-east-2",
-            "tooltip": "Your account's AWS region that you will use to access AWS services.",
-            "description": "Your account's AWS region that you will use to access AWS services."
+            "tooltip": "Your account\u0027s AWS region that you will use to access AWS services.",
+            "description": "Your account\u0027s AWS region that you will use to access AWS services."
           },
           {
             "title": "Role ARN",
@@ -122,26 +134,33 @@
       },
       "parameters": [
         {
+          "name": "command",
           "title": "Command",
-          "required": true,
+          "type": "text",
           "editable": true,
           "visible": true,
-          "type": "text",
-          "name": "command",
+          "required": true,
+          "placeholder": "ec2 describe-instances",
+          "tooltip": "Specify the AWS command, without the aws, to run on the host. For example, if you want to run the command aws ec2 describe-instances to list all EC2 instances, Specify ec2 describe-instances in this field.",
           "description": "Specify the AWS command, without the aws, to run on the host. For example, if you want to run the command aws ec2 describe-instances to list all EC2 instances, Specify ec2 describe-instances in this field.",
-          "tooltip": "Specify the AWS command, without the aws, to run on the host. For example, if you want to run the command aws ec2 describe-instances to list all EC2 instances, Specify ec2 describe-instances in this field."
+          "isOnChange": false,
+          "onchange": {}
         },
         {
+          "name": "optional_parameters",
           "title": "Parameters",
-          "required": false,
+          "type": "text",
           "editable": true,
           "visible": true,
-          "type": "text",
-          "name": "optional_parameters",
+          "required": false,
+          "placeholder": "--instance-ids \"i-1234515\"",
+          "tooltip": "Specify a parameter name and its value to filter the results returned by the command. For information on parameters, refer https://docs.aws.amazon.com/cli/#latest-version",
           "description": "Specify a parameter name and its value to filter the results returned by the command. For information on parameters, refer https://docs.aws.amazon.com/cli/#latest-version",
-          "tooltip": "Specify a parameter name and its value to filter the results returned by the command. For information on parameters, refer https://docs.aws.amazon.com/cli/#latest-version"
+          "isOnChange": false,
+          "onchange": {}
         }
-      ]
+      ],
+      "output_schema": {}
     },
     {
       "operation": "get_details_for_all_images",
@@ -158,7 +177,7 @@
           "editable": true,
           "visible": true,
           "tooltip": "Enable to assume a role",
-          "description": "Select this option to assume a role.Note: You must enable this option, i.e., this parameter is required, if you have specified IAM Role as the Configuration Type. If you have specified Access Credentials as the Configuration Type, then this parameter is optional.If you select this option, then you must specify the following parameters: AWS Region: Your account's AWS region that you will use to access AWS services. Role ARN: ARN of the role that you want to assume to execute this action on AWS. Session Name: Name of the session that will be created to execute this action on AWS.",
+          "description": "Select this option to assume a role.Note: You must enable this option, i.e., this parameter is required, if you have specified IAM Role as the Configuration Type. If you have specified Access Credentials as the Configuration Type, then this parameter is optional.If you select this option, then you must specify the following parameters: AWS Region: Your account\u0027s AWS region that you will use to access AWS services. Role ARN: ARN of the role that you want to assume to execute this action on AWS. Session Name: Name of the session that will be created to execute this action on AWS.",
           "value": false,
           "onchange": {
             "true": [
@@ -170,8 +189,11 @@
                 "type": "text",
                 "name": "aws_region",
                 "placeholder": "e.g. us-east-2",
-                "tooltip": "Your account's AWS region that you will use to access AWS services.",
-                "description": "Your account's AWS region that you will use to access AWS services."
+                "tooltip": "Your account\u0027s AWS region that you will use to access AWS services.",
+                "description": "Your account\u0027s AWS region that you will use to access AWS services.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               },
               {
                 "title": "Role ARN",
@@ -182,7 +204,10 @@
                 "visible": true,
                 "placeholder": "arn:aws:iam::{{account_id}}:role/{{role_name}}",
                 "tooltip": "ARN of the role that you want assume to execute this action on AWS.",
-                "description": "ARN of the role that you want assume to execute this action on AWS."
+                "description": "ARN of the role that you want assume to execute this action on AWS.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               },
               {
                 "title": "Session Name",
@@ -192,7 +217,10 @@
                 "editable": true,
                 "visible": true,
                 "tooltip": "Name of the session that will be created to execute this action on AWS.",
-                "description": "Name of the session that will be created to execute this action on AWS."
+                "description": "Name of the session that will be created to execute this action on AWS.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               }
             ]
           }
@@ -293,7 +321,7 @@
           "editable": true,
           "visible": true,
           "tooltip": "Enable to assume a role",
-          "description": "Select this option to assume a role.Note: You must enable this option, i.e., this parameter is required, if you have specified IAM Role as the Configuration Type. If you have specified Access Credentials as the Configuration Type, then this parameter is optional.If you select this option, then you must specify the following parameters: AWS Region: Your account's AWS region that you will use to access AWS services. Role ARN: ARN of the role that you want to assume to execute this action on AWS. Session Name: Name of the session that will be created to execute this action on AWS.",
+          "description": "Select this option to assume a role.Note: You must enable this option, i.e., this parameter is required, if you have specified IAM Role as the Configuration Type. If you have specified Access Credentials as the Configuration Type, then this parameter is optional.If you select this option, then you must specify the following parameters: AWS Region: Your account\u0027s AWS region that you will use to access AWS services. Role ARN: ARN of the role that you want to assume to execute this action on AWS. Session Name: Name of the session that will be created to execute this action on AWS.",
           "value": false,
           "onchange": {
             "true": [
@@ -305,8 +333,11 @@
                 "type": "text",
                 "name": "aws_region",
                 "placeholder": "e.g. us-east-2",
-                "tooltip": "Your account's AWS region that you will use to access AWS services.",
-                "description": "Your account's AWS region that you will use to access AWS services."
+                "tooltip": "Your account\u0027s AWS region that you will use to access AWS services.",
+                "description": "Your account\u0027s AWS region that you will use to access AWS services.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               },
               {
                 "title": "Role ARN",
@@ -317,7 +348,10 @@
                 "visible": true,
                 "placeholder": "arn:aws:iam::{{account_id}}:role/{{role_name}}",
                 "tooltip": "ARN of the role that you want assume to execute this action on AWS.",
-                "description": "ARN of the role that you want assume to execute this action on AWS."
+                "description": "ARN of the role that you want assume to execute this action on AWS.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               },
               {
                 "title": "Session Name",
@@ -327,7 +361,10 @@
                 "editable": true,
                 "visible": true,
                 "tooltip": "Name of the session that will be created to execute this action on AWS.",
-                "description": "Name of the session that will be created to execute this action on AWS."
+                "description": "Name of the session that will be created to execute this action on AWS.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               }
             ]
           }
@@ -491,8 +528,8 @@
           "editable": true,
           "visible": true,
           "placeholder": "e.g. subnet-42d09c0f",
-          "tooltip": "ID of the subnet associated with the network string. ID of a subnet must be provided if you don't want to use default subnet to this instance",
-          "description": "ID of the subnet associated with the network string.ID of a subnet must be provided if you don't want to use default subnet to this instance"
+          "tooltip": "ID of the subnet associated with the network string. ID of a subnet must be provided if you don\u0027t want to use default subnet to this instance",
+          "description": "ID of the subnet associated with the network string.ID of a subnet must be provided if you don\u0027t want to use default subnet to this instance"
         },
         {
           "title": "Device Name",
@@ -523,8 +560,8 @@
           "required": false,
           "editable": true,
           "visible": true,
-          "tooltip": "One or more security group IDs. Default: Amazon EC2 uses the default security group. You can give multiple group ids like \"sg-3578605d\", \"sg-f1445c99\" or ['sg-3578605d', 'sg-f1445c99']",
-          "placeholder": "e.g. ['sg-3578605d', 'sg-f1445c99']",
+          "tooltip": "One or more security group IDs. Default: Amazon EC2 uses the default security group. You can give multiple group ids like \"sg-3578605d\", \"sg-f1445c99\" or [\u0027sg-3578605d\u0027, \u0027sg-f1445c99\u0027]",
+          "placeholder": "e.g. [\u0027sg-3578605d\u0027, \u0027sg-f1445c99\u0027]",
           "description": "SD(s) of the security group(s) to be assigned to the newly launched instance on AWS EC2."
         },
         {
@@ -593,7 +630,7 @@
           "editable": true,
           "visible": true,
           "tooltip": "Enable to assume a role",
-          "description": "Select this option to assume a role.Note: You must enable this option, i.e., this parameter is required, if you have specified IAM Role as the Configuration Type. If you have specified Access Credentials as the Configuration Type, then this parameter is optional.If you select this option, then you must specify the following parameters: AWS Region: Your account's AWS region that you will use to access AWS services. Role ARN: ARN of the role that you want to assume to execute this action on AWS. Session Name: Name of the session that will be created to execute this action on AWS.",
+          "description": "Select this option to assume a role.Note: You must enable this option, i.e., this parameter is required, if you have specified IAM Role as the Configuration Type. If you have specified Access Credentials as the Configuration Type, then this parameter is optional.If you select this option, then you must specify the following parameters: AWS Region: Your account\u0027s AWS region that you will use to access AWS services. Role ARN: ARN of the role that you want to assume to execute this action on AWS. Session Name: Name of the session that will be created to execute this action on AWS.",
           "value": false,
           "onchange": {
             "true": [
@@ -605,8 +642,11 @@
                 "type": "text",
                 "name": "aws_region",
                 "placeholder": "e.g. us-east-2",
-                "tooltip": "Your account's AWS region that you will use to access AWS services.",
-                "description": "Your account's AWS region that you will use to access AWS services."
+                "tooltip": "Your account\u0027s AWS region that you will use to access AWS services.",
+                "description": "Your account\u0027s AWS region that you will use to access AWS services.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               },
               {
                 "title": "Role ARN",
@@ -617,7 +657,10 @@
                 "visible": true,
                 "placeholder": "arn:aws:iam::{{account_id}}:role/{{role_name}}",
                 "tooltip": "ARN of the role that you want assume to execute this action on AWS.",
-                "description": "ARN of the role that you want assume to execute this action on AWS."
+                "description": "ARN of the role that you want assume to execute this action on AWS.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               },
               {
                 "title": "Session Name",
@@ -627,7 +670,10 @@
                 "editable": true,
                 "visible": true,
                 "tooltip": "Name of the session that will be created to execute this action on AWS.",
-                "description": "Name of the session that will be created to execute this action on AWS."
+                "description": "Name of the session that will be created to execute this action on AWS.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               }
             ]
           }
@@ -724,7 +770,7 @@
           "editable": true,
           "visible": true,
           "tooltip": "Enable to assume a role",
-          "description": "Select this option to assume a role.Note: You must enable this option, i.e., this parameter is required, if you have specified IAM Role as the Configuration Type. If you have specified Access Credentials as the Configuration Type, then this parameter is optional.If you select this option, then you must specify the following parameters: AWS Region: Your account's AWS region that you will use to access AWS services. Role ARN: ARN of the role that you want to assume to execute this action on AWS. Session Name: Name of the session that will be created to execute this action on AWS.",
+          "description": "Select this option to assume a role.Note: You must enable this option, i.e., this parameter is required, if you have specified IAM Role as the Configuration Type. If you have specified Access Credentials as the Configuration Type, then this parameter is optional.If you select this option, then you must specify the following parameters: AWS Region: Your account\u0027s AWS region that you will use to access AWS services. Role ARN: ARN of the role that you want to assume to execute this action on AWS. Session Name: Name of the session that will be created to execute this action on AWS.",
           "value": false,
           "onchange": {
             "true": [
@@ -736,8 +782,11 @@
                 "type": "text",
                 "name": "aws_region",
                 "placeholder": "e.g. us-east-2",
-                "tooltip": "Your account's AWS region that you will use to access AWS services.",
-                "description": "Your account's AWS region that you will use to access AWS services."
+                "tooltip": "Your account\u0027s AWS region that you will use to access AWS services.",
+                "description": "Your account\u0027s AWS region that you will use to access AWS services.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               },
               {
                 "title": "Role ARN",
@@ -748,7 +797,10 @@
                 "visible": true,
                 "placeholder": "arn:aws:iam::{{account_id}}:role/{{role_name}}",
                 "tooltip": "ARN of the role that you want assume to execute this action on AWS.",
-                "description": "ARN of the role that you want assume to execute this action on AWS."
+                "description": "ARN of the role that you want assume to execute this action on AWS.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               },
               {
                 "title": "Session Name",
@@ -758,7 +810,10 @@
                 "editable": true,
                 "visible": true,
                 "tooltip": "Name of the session that will be created to execute this action on AWS.",
-                "description": "Name of the session that will be created to execute this action on AWS."
+                "description": "Name of the session that will be created to execute this action on AWS.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               }
             ]
           }
@@ -787,32 +842,32 @@
       ],
       "enabled": true,
       "output_schema": {
-    "ResponseMetadata": {
-      "RequestId": "",
-      "HTTPHeaders": {
-        "date": "",
-        "server": "",
-        "content-type": "",
-        "content-length": "",
-        "x-amzn-requestid": ""
-      },
-      "RetryAttempts": "",
-      "HTTPStatusCode": ""
-    },
-    "StartingInstances": [
-      {
-        "InstanceId": "",
-        "CurrentState": {
-          "Code": "",
-          "Name": ""
+        "ResponseMetadata": {
+          "RequestId": "",
+          "HTTPHeaders": {
+            "date": "",
+            "server": "",
+            "content-type": "",
+            "content-length": "",
+            "x-amzn-requestid": ""
+          },
+          "RetryAttempts": "",
+          "HTTPStatusCode": ""
         },
-        "PreviousState": {
-          "Code": "",
-          "Name": ""
-        }
+        "StartingInstances": [
+          {
+            "InstanceId": "",
+            "CurrentState": {
+              "Code": "",
+              "Name": ""
+            },
+            "PreviousState": {
+              "Code": "",
+              "Name": ""
+            }
+          }
+        ]
       }
-    ]
-  }
     },
     {
       "operation": "stop_instance",
@@ -829,7 +884,7 @@
           "editable": true,
           "visible": true,
           "tooltip": "Enable to assume a role",
-          "description": "Select this option to assume a role.Note: You must enable this option, i.e., this parameter is required, if you have specified IAM Role as the Configuration Type. If you have specified Access Credentials as the Configuration Type, then this parameter is optional.If you select this option, then you must specify the following parameters: AWS Region: Your account's AWS region that you will use to access AWS services. Role ARN: ARN of the role that you want to assume to execute this action on AWS. Session Name: Name of the session that will be created to execute this action on AWS.",
+          "description": "Select this option to assume a role.Note: You must enable this option, i.e., this parameter is required, if you have specified IAM Role as the Configuration Type. If you have specified Access Credentials as the Configuration Type, then this parameter is optional.If you select this option, then you must specify the following parameters: AWS Region: Your account\u0027s AWS region that you will use to access AWS services. Role ARN: ARN of the role that you want to assume to execute this action on AWS. Session Name: Name of the session that will be created to execute this action on AWS.",
           "value": false,
           "onchange": {
             "true": [
@@ -841,8 +896,11 @@
                 "type": "text",
                 "name": "aws_region",
                 "placeholder": "e.g. us-east-2",
-                "tooltip": "Your account's AWS region that you will use to access AWS services.",
-                "description": "Your account's AWS region that you will use to access AWS services."
+                "tooltip": "Your account\u0027s AWS region that you will use to access AWS services.",
+                "description": "Your account\u0027s AWS region that you will use to access AWS services.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               },
               {
                 "title": "Role ARN",
@@ -853,7 +911,10 @@
                 "visible": true,
                 "placeholder": "arn:aws:iam::{{account_id}}:role/{{role_name}}",
                 "tooltip": "ARN of the role that you want assume to execute this action on AWS.",
-                "description": "ARN of the role that you want assume to execute this action on AWS."
+                "description": "ARN of the role that you want assume to execute this action on AWS.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               },
               {
                 "title": "Session Name",
@@ -863,7 +924,10 @@
                 "editable": true,
                 "visible": true,
                 "tooltip": "Name of the session that will be created to execute this action on AWS.",
-                "description": "Name of the session that will be created to execute this action on AWS."
+                "description": "Name of the session that will be created to execute this action on AWS.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               }
             ]
           }
@@ -918,7 +982,7 @@
           "editable": true,
           "visible": true,
           "tooltip": "Enable to assume a role",
-          "description": "Select this option to assume a role.Note: You must enable this option, i.e., this parameter is required, if you have specified IAM Role as the Configuration Type. If you have specified Access Credentials as the Configuration Type, then this parameter is optional.If you select this option, then you must specify the following parameters: AWS Region: Your account's AWS region that you will use to access AWS services. Role ARN: ARN of the role that you want to assume to execute this action on AWS. Session Name: Name of the session that will be created to execute this action on AWS.",
+          "description": "Select this option to assume a role.Note: You must enable this option, i.e., this parameter is required, if you have specified IAM Role as the Configuration Type. If you have specified Access Credentials as the Configuration Type, then this parameter is optional.If you select this option, then you must specify the following parameters: AWS Region: Your account\u0027s AWS region that you will use to access AWS services. Role ARN: ARN of the role that you want to assume to execute this action on AWS. Session Name: Name of the session that will be created to execute this action on AWS.",
           "value": false,
           "onchange": {
             "true": [
@@ -930,8 +994,11 @@
                 "type": "text",
                 "name": "aws_region",
                 "placeholder": "e.g. us-east-2",
-                "tooltip": "Your account's AWS region that you will use to access AWS services.",
-                "description": "Your account's AWS region that you will use to access AWS services."
+                "tooltip": "Your account\u0027s AWS region that you will use to access AWS services.",
+                "description": "Your account\u0027s AWS region that you will use to access AWS services.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               },
               {
                 "title": "Role ARN",
@@ -942,7 +1009,10 @@
                 "visible": true,
                 "placeholder": "arn:aws:iam::{{account_id}}:role/{{role_name}}",
                 "tooltip": "ARN of the role that you want assume to execute this action on AWS.",
-                "description": "ARN of the role that you want assume to execute this action on AWS."
+                "description": "ARN of the role that you want assume to execute this action on AWS.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               },
               {
                 "title": "Session Name",
@@ -952,7 +1022,10 @@
                 "editable": true,
                 "visible": true,
                 "tooltip": "Name of the session that will be created to execute this action on AWS.",
-                "description": "Name of the session that will be created to execute this action on AWS."
+                "description": "Name of the session that will be created to execute this action on AWS.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               }
             ]
           }
@@ -1000,7 +1073,7 @@
           "editable": true,
           "visible": true,
           "tooltip": "Enable to assume a role",
-          "description": "Select this option to assume a role.Note: You must enable this option, i.e., this parameter is required, if you have specified IAM Role as the Configuration Type. If you have specified Access Credentials as the Configuration Type, then this parameter is optional.If you select this option, then you must specify the following parameters: AWS Region: Your account's AWS region that you will use to access AWS services. Role ARN: ARN of the role that you want to assume to execute this action on AWS. Session Name: Name of the session that will be created to execute this action on AWS.",
+          "description": "Select this option to assume a role.Note: You must enable this option, i.e., this parameter is required, if you have specified IAM Role as the Configuration Type. If you have specified Access Credentials as the Configuration Type, then this parameter is optional.If you select this option, then you must specify the following parameters: AWS Region: Your account\u0027s AWS region that you will use to access AWS services. Role ARN: ARN of the role that you want to assume to execute this action on AWS. Session Name: Name of the session that will be created to execute this action on AWS.",
           "value": false,
           "onchange": {
             "true": [
@@ -1012,8 +1085,11 @@
                 "type": "text",
                 "name": "aws_region",
                 "placeholder": "e.g. us-east-2",
-                "tooltip": "Your account's AWS region that you will use to access AWS services.",
-                "description": "Your account's AWS region that you will use to access AWS services."
+                "tooltip": "Your account\u0027s AWS region that you will use to access AWS services.",
+                "description": "Your account\u0027s AWS region that you will use to access AWS services.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               },
               {
                 "title": "Role ARN",
@@ -1024,7 +1100,10 @@
                 "visible": true,
                 "placeholder": "arn:aws:iam::{{account_id}}:role/{{role_name}}",
                 "tooltip": "ARN of the role that you want assume to execute this action on AWS.",
-                "description": "ARN of the role that you want assume to execute this action on AWS."
+                "description": "ARN of the role that you want assume to execute this action on AWS.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               },
               {
                 "title": "Session Name",
@@ -1034,7 +1113,10 @@
                 "editable": true,
                 "visible": true,
                 "tooltip": "Name of the session that will be created to execute this action on AWS.",
-                "description": "Name of the session that will be created to execute this action on AWS."
+                "description": "Name of the session that will be created to execute this action on AWS.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               }
             ]
           }
@@ -1096,7 +1178,7 @@
           "editable": true,
           "visible": true,
           "tooltip": "Enable to assume a role",
-          "description": "Select this option to assume a role.Note: You must enable this option, i.e., this parameter is required, if you have specified IAM Role as the Configuration Type. If you have specified Access Credentials as the Configuration Type, then this parameter is optional.If you select this option, then you must specify the following parameters: AWS Region: Your account's AWS region that you will use to access AWS services. Role ARN: ARN of the role that you want to assume to execute this action on AWS. Session Name: Name of the session that will be created to execute this action on AWS.",
+          "description": "Select this option to assume a role.Note: You must enable this option, i.e., this parameter is required, if you have specified IAM Role as the Configuration Type. If you have specified Access Credentials as the Configuration Type, then this parameter is optional.If you select this option, then you must specify the following parameters: AWS Region: Your account\u0027s AWS region that you will use to access AWS services. Role ARN: ARN of the role that you want to assume to execute this action on AWS. Session Name: Name of the session that will be created to execute this action on AWS.",
           "value": false,
           "onchange": {
             "true": [
@@ -1108,8 +1190,11 @@
                 "type": "text",
                 "name": "aws_region",
                 "placeholder": "e.g. us-east-2",
-                "tooltip": "Your account's AWS region that you will use to access AWS services.",
-                "description": "Your account's AWS region that you will use to access AWS services."
+                "tooltip": "Your account\u0027s AWS region that you will use to access AWS services.",
+                "description": "Your account\u0027s AWS region that you will use to access AWS services.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               },
               {
                 "title": "Role ARN",
@@ -1120,7 +1205,10 @@
                 "visible": true,
                 "placeholder": "arn:aws:iam::{{account_id}}:role/{{role_name}}",
                 "tooltip": "ARN of the role that you want assume to execute this action on AWS.",
-                "description": "ARN of the role that you want assume to execute this action on AWS."
+                "description": "ARN of the role that you want assume to execute this action on AWS.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               },
               {
                 "title": "Session Name",
@@ -1130,7 +1218,10 @@
                 "editable": true,
                 "visible": true,
                 "tooltip": "Name of the session that will be created to execute this action on AWS.",
-                "description": "Name of the session that will be created to execute this action on AWS."
+                "description": "Name of the session that will be created to execute this action on AWS.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               }
             ]
           }
@@ -1195,7 +1286,7 @@
           "editable": true,
           "visible": true,
           "tooltip": "Enable to assume a role",
-          "description": "Select this option to assume a role.Note: You must enable this option, i.e., this parameter is required, if you have specified IAM Role as the Configuration Type. If you have specified Access Credentials as the Configuration Type, then this parameter is optional.If you select this option, then you must specify the following parameters: AWS Region: Your account's AWS region that you will use to access AWS services. Role ARN: ARN of the role that you want to assume to execute this action on AWS. Session Name: Name of the session that will be created to execute this action on AWS.",
+          "description": "Select this option to assume a role.Note: You must enable this option, i.e., this parameter is required, if you have specified IAM Role as the Configuration Type. If you have specified Access Credentials as the Configuration Type, then this parameter is optional.If you select this option, then you must specify the following parameters: AWS Region: Your account\u0027s AWS region that you will use to access AWS services. Role ARN: ARN of the role that you want to assume to execute this action on AWS. Session Name: Name of the session that will be created to execute this action on AWS.",
           "value": false,
           "onchange": {
             "true": [
@@ -1207,8 +1298,11 @@
                 "type": "text",
                 "name": "aws_region",
                 "placeholder": "e.g. us-east-2",
-                "tooltip": "Your account's AWS region that you will use to access AWS services.",
-                "description": "Your account's AWS region that you will use to access AWS services."
+                "tooltip": "Your account\u0027s AWS region that you will use to access AWS services.",
+                "description": "Your account\u0027s AWS region that you will use to access AWS services.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               },
               {
                 "title": "Role ARN",
@@ -1219,7 +1313,10 @@
                 "visible": true,
                 "placeholder": "arn:aws:iam::{{account_id}}:role/{{role_name}}",
                 "tooltip": "ARN of the role that you want assume to execute this action on AWS.",
-                "description": "ARN of the role that you want assume to execute this action on AWS."
+                "description": "ARN of the role that you want assume to execute this action on AWS.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               },
               {
                 "title": "Session Name",
@@ -1229,7 +1326,10 @@
                 "editable": true,
                 "visible": true,
                 "tooltip": "Name of the session that will be created to execute this action on AWS.",
-                "description": "Name of the session that will be created to execute this action on AWS."
+                "description": "Name of the session that will be created to execute this action on AWS.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               }
             ]
           }
@@ -1287,7 +1387,7 @@
           "editable": true,
           "visible": true,
           "tooltip": "Enable to assume a role",
-          "description": "Select this option to assume a role.Note: You must enable this option, i.e., this parameter is required, if you have specified IAM Role as the Configuration Type. If you have specified Access Credentials as the Configuration Type, then this parameter is optional.If you select this option, then you must specify the following parameters: AWS Region: Your account's AWS region that you will use to access AWS services. Role ARN: ARN of the role that you want to assume to execute this action on AWS. Session Name: Name of the session that will be created to execute this action on AWS.",
+          "description": "Select this option to assume a role.Note: You must enable this option, i.e., this parameter is required, if you have specified IAM Role as the Configuration Type. If you have specified Access Credentials as the Configuration Type, then this parameter is optional.If you select this option, then you must specify the following parameters: AWS Region: Your account\u0027s AWS region that you will use to access AWS services. Role ARN: ARN of the role that you want to assume to execute this action on AWS. Session Name: Name of the session that will be created to execute this action on AWS.",
           "value": false,
           "onchange": {
             "true": [
@@ -1299,8 +1399,11 @@
                 "type": "text",
                 "name": "aws_region",
                 "placeholder": "e.g. us-east-2",
-                "tooltip": "Your account's AWS region that you will use to access AWS services.",
-                "description": "Your account's AWS region that you will use to access AWS services."
+                "tooltip": "Your account\u0027s AWS region that you will use to access AWS services.",
+                "description": "Your account\u0027s AWS region that you will use to access AWS services.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               },
               {
                 "title": "Role ARN",
@@ -1311,7 +1414,10 @@
                 "visible": true,
                 "placeholder": "arn:aws:iam::{{account_id}}:role/{{role_name}}",
                 "tooltip": "ARN of the role that you want assume to execute this action on AWS.",
-                "description": "ARN of the role that you want assume to execute this action on AWS."
+                "description": "ARN of the role that you want assume to execute this action on AWS.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               },
               {
                 "title": "Session Name",
@@ -1321,7 +1427,10 @@
                 "editable": true,
                 "visible": true,
                 "tooltip": "Name of the session that will be created to execute this action on AWS.",
-                "description": "Name of the session that will be created to execute this action on AWS."
+                "description": "Name of the session that will be created to execute this action on AWS.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               }
             ]
           }
@@ -1343,8 +1452,8 @@
           "visible": true,
           "type": "text",
           "name": "instance_id",
-          "tooltip": "One or more security group IDs. You can give multiple group ids like 'i-000a15c1589bb38ec', 'i-0055c209fce039354' or ['i-000a15c1589bb38ec', 'i-0055c209fce039354']",
-          "placeholder": "e.g. ['i-000a15c1589bb38ec', 'i-0055c209fce039354']",
+          "tooltip": "One or more security group IDs. You can give multiple group ids like \u0027i-000a15c1589bb38ec\u0027, \u0027i-0055c209fce039354\u0027 or [\u0027i-000a15c1589bb38ec\u0027, \u0027i-0055c209fce039354\u0027]",
+          "placeholder": "e.g. [\u0027i-000a15c1589bb38ec\u0027, \u0027i-0055c209fce039354\u0027]",
           "description": "ID(s) of the instance(s) that you want to attach to the specified auto scaling group using the CSV or list format on AWS EC2."
         }
       ],
@@ -1378,7 +1487,7 @@
           "editable": true,
           "visible": true,
           "tooltip": "Enable to assume a role",
-          "description": "Select this option to assume a role.Note: You must enable this option, i.e., this parameter is required, if you have specified IAM Role as the Configuration Type. If you have specified Access Credentials as the Configuration Type, then this parameter is optional.If you select this option, then you must specify the following parameters: AWS Region: Your account's AWS region that you will use to access AWS services. Role ARN: ARN of the role that you want to assume to execute this action on AWS. Session Name: Name of the session that will be created to execute this action on AWS.",
+          "description": "Select this option to assume a role.Note: You must enable this option, i.e., this parameter is required, if you have specified IAM Role as the Configuration Type. If you have specified Access Credentials as the Configuration Type, then this parameter is optional.If you select this option, then you must specify the following parameters: AWS Region: Your account\u0027s AWS region that you will use to access AWS services. Role ARN: ARN of the role that you want to assume to execute this action on AWS. Session Name: Name of the session that will be created to execute this action on AWS.",
           "value": false,
           "onchange": {
             "true": [
@@ -1390,8 +1499,11 @@
                 "type": "text",
                 "name": "aws_region",
                 "placeholder": "e.g. us-east-2",
-                "tooltip": "Your account's AWS region that you will use to access AWS services.",
-                "description": "Your account's AWS region that you will use to access AWS services."
+                "tooltip": "Your account\u0027s AWS region that you will use to access AWS services.",
+                "description": "Your account\u0027s AWS region that you will use to access AWS services.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               },
               {
                 "title": "Role ARN",
@@ -1402,7 +1514,10 @@
                 "visible": true,
                 "placeholder": "arn:aws:iam::{{account_id}}:role/{{role_name}}",
                 "tooltip": "ARN of the role that you want assume to execute this action on AWS.",
-                "description": "ARN of the role that you want assume to execute this action on AWS."
+                "description": "ARN of the role that you want assume to execute this action on AWS.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               },
               {
                 "title": "Session Name",
@@ -1412,7 +1527,10 @@
                 "editable": true,
                 "visible": true,
                 "tooltip": "Name of the session that will be created to execute this action on AWS.",
-                "description": "Name of the session that will be created to execute this action on AWS."
+                "description": "Name of the session that will be created to execute this action on AWS.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               }
             ]
           }
@@ -1434,8 +1552,8 @@
           "visible": true,
           "type": "text",
           "name": "instance_id",
-          "tooltip": "One or more security group IDs. You can give multiple group ids like 'i-000a15c1589bb38ec', 'i-0055c209fce039354' or ['i-000a15c1589bb38ec', 'i-0055c209fce039354']",
-          "placeholder": "e.g. ['i-000a15c1589bb38ec', 'i-0055c209fce039354']",
+          "tooltip": "One or more security group IDs. You can give multiple group ids like \u0027i-000a15c1589bb38ec\u0027, \u0027i-0055c209fce039354\u0027 or [\u0027i-000a15c1589bb38ec\u0027, \u0027i-0055c209fce039354\u0027]",
+          "placeholder": "e.g. [\u0027i-000a15c1589bb38ec\u0027, \u0027i-0055c209fce039354\u0027]",
           "description": "ID of the instance that you want to detach from the specified auto scaling group on AWS EC2."
         }
       ],
@@ -1479,7 +1597,7 @@
           "editable": true,
           "visible": true,
           "tooltip": "Enable to assume a role",
-          "description": "Select this option to assume a role.Note: You must enable this option, i.e., this parameter is required, if you have specified IAM Role as the Configuration Type. If you have specified Access Credentials as the Configuration Type, then this parameter is optional.If you select this option, then you must specify the following parameters: AWS Region: Your account's AWS region that you will use to access AWS services. Role ARN: ARN of the role that you want to assume to execute this action on AWS. Session Name: Name of the session that will be created to execute this action on AWS.",
+          "description": "Select this option to assume a role.Note: You must enable this option, i.e., this parameter is required, if you have specified IAM Role as the Configuration Type. If you have specified Access Credentials as the Configuration Type, then this parameter is optional.If you select this option, then you must specify the following parameters: AWS Region: Your account\u0027s AWS region that you will use to access AWS services. Role ARN: ARN of the role that you want to assume to execute this action on AWS. Session Name: Name of the session that will be created to execute this action on AWS.",
           "value": false,
           "onchange": {
             "true": [
@@ -1491,8 +1609,11 @@
                 "type": "text",
                 "name": "aws_region",
                 "placeholder": "e.g. us-east-2",
-                "tooltip": "Your account's AWS region that you will use to access AWS services.",
-                "description": "Your account's AWS region that you will use to access AWS services."
+                "tooltip": "Your account\u0027s AWS region that you will use to access AWS services.",
+                "description": "Your account\u0027s AWS region that you will use to access AWS services.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               },
               {
                 "title": "Role ARN",
@@ -1503,7 +1624,10 @@
                 "visible": true,
                 "placeholder": "arn:aws:iam::{{account_id}}:role/{{role_name}}",
                 "tooltip": "ARN of the role that you want assume to execute this action on AWS.",
-                "description": "ARN of the role that you want assume to execute this action on AWS."
+                "description": "ARN of the role that you want assume to execute this action on AWS.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               },
               {
                 "title": "Session Name",
@@ -1513,7 +1637,10 @@
                 "editable": true,
                 "visible": true,
                 "tooltip": "Name of the session that will be created to execute this action on AWS.",
-                "description": "Name of the session that will be created to execute this action on AWS."
+                "description": "Name of the session that will be created to execute this action on AWS.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               }
             ]
           }
@@ -1569,7 +1696,7 @@
           "editable": true,
           "visible": true,
           "tooltip": "Enable to assume a role",
-          "description": "Select this option to assume a role.Note: You must enable this option, i.e., this parameter is required, if you have specified IAM Role as the Configuration Type. If you have specified Access Credentials as the Configuration Type, then this parameter is optional.If you select this option, then you must specify the following parameters: AWS Region: Your account's AWS region that you will use to access AWS services. Role ARN: ARN of the role that you want to assume to execute this action on AWS. Session Name: Name of the session that will be created to execute this action on AWS.",
+          "description": "Select this option to assume a role.Note: You must enable this option, i.e., this parameter is required, if you have specified IAM Role as the Configuration Type. If you have specified Access Credentials as the Configuration Type, then this parameter is optional.If you select this option, then you must specify the following parameters: AWS Region: Your account\u0027s AWS region that you will use to access AWS services. Role ARN: ARN of the role that you want to assume to execute this action on AWS. Session Name: Name of the session that will be created to execute this action on AWS.",
           "value": false,
           "onchange": {
             "true": [
@@ -1581,8 +1708,11 @@
                 "type": "text",
                 "name": "aws_region",
                 "placeholder": "e.g. us-east-2",
-                "tooltip": "Your account's AWS region that you will use to access AWS services.",
-                "description": "Your account's AWS region that you will use to access AWS services."
+                "tooltip": "Your account\u0027s AWS region that you will use to access AWS services.",
+                "description": "Your account\u0027s AWS region that you will use to access AWS services.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               },
               {
                 "title": "Role ARN",
@@ -1593,7 +1723,10 @@
                 "visible": true,
                 "placeholder": "arn:aws:iam::{{account_id}}:role/{{role_name}}",
                 "tooltip": "ARN of the role that you want assume to execute this action on AWS.",
-                "description": "ARN of the role that you want assume to execute this action on AWS."
+                "description": "ARN of the role that you want assume to execute this action on AWS.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               },
               {
                 "title": "Session Name",
@@ -1603,7 +1736,10 @@
                 "editable": true,
                 "visible": true,
                 "tooltip": "Name of the session that will be created to execute this action on AWS.",
-                "description": "Name of the session that will be created to execute this action on AWS."
+                "description": "Name of the session that will be created to execute this action on AWS.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               }
             ]
           }
@@ -1658,7 +1794,7 @@
           "editable": true,
           "visible": true,
           "tooltip": "Enable to assume a role",
-          "description": "Select this option to assume a role.Note: You must enable this option, i.e., this parameter is required, if you have specified IAM Role as the Configuration Type. If you have specified Access Credentials as the Configuration Type, then this parameter is optional.If you select this option, then you must specify the following parameters: AWS Region: Your account's AWS region that you will use to access AWS services. Role ARN: ARN of the role that you want to assume to execute this action on AWS. Session Name: Name of the session that will be created to execute this action on AWS.",
+          "description": "Select this option to assume a role.Note: You must enable this option, i.e., this parameter is required, if you have specified IAM Role as the Configuration Type. If you have specified Access Credentials as the Configuration Type, then this parameter is optional.If you select this option, then you must specify the following parameters: AWS Region: Your account\u0027s AWS region that you will use to access AWS services. Role ARN: ARN of the role that you want to assume to execute this action on AWS. Session Name: Name of the session that will be created to execute this action on AWS.",
           "value": false,
           "onchange": {
             "true": [
@@ -1670,8 +1806,11 @@
                 "type": "text",
                 "name": "aws_region",
                 "placeholder": "e.g. us-east-2",
-                "tooltip": "Your account's AWS region that you will use to access AWS services.",
-                "description": "Your account's AWS region that you will use to access AWS services."
+                "tooltip": "Your account\u0027s AWS region that you will use to access AWS services.",
+                "description": "Your account\u0027s AWS region that you will use to access AWS services.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               },
               {
                 "title": "Role ARN",
@@ -1682,7 +1821,10 @@
                 "visible": true,
                 "placeholder": "arn:aws:iam::{{account_id}}:role/{{role_name}}",
                 "tooltip": "ARN of the role that you want assume to execute this action on AWS.",
-                "description": "ARN of the role that you want assume to execute this action on AWS."
+                "description": "ARN of the role that you want assume to execute this action on AWS.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               },
               {
                 "title": "Session Name",
@@ -1692,7 +1834,10 @@
                 "editable": true,
                 "visible": true,
                 "tooltip": "Name of the session that will be created to execute this action on AWS.",
-                "description": "Name of the session that will be created to execute this action on AWS."
+                "description": "Name of the session that will be created to execute this action on AWS.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               }
             ]
           }
@@ -1767,7 +1912,7 @@
           "editable": true,
           "visible": true,
           "tooltip": "Enable to assume a role",
-          "description": "Select this option to assume a role.Note: You must enable this option, i.e., this parameter is required, if you have specified IAM Role as the Configuration Type. If you have specified Access Credentials as the Configuration Type, then this parameter is optional.If you select this option, then you must specify the following parameters: AWS Region: Your account's AWS region that you will use to access AWS services. Role ARN: ARN of the role that you want to assume to execute this action on AWS. Session Name: Name of the session that will be created to execute this action on AWS.",
+          "description": "Select this option to assume a role.Note: You must enable this option, i.e., this parameter is required, if you have specified IAM Role as the Configuration Type. If you have specified Access Credentials as the Configuration Type, then this parameter is optional.If you select this option, then you must specify the following parameters: AWS Region: Your account\u0027s AWS region that you will use to access AWS services. Role ARN: ARN of the role that you want to assume to execute this action on AWS. Session Name: Name of the session that will be created to execute this action on AWS.",
           "value": false,
           "onchange": {
             "true": [
@@ -1779,8 +1924,11 @@
                 "type": "text",
                 "name": "aws_region",
                 "placeholder": "e.g. us-east-2",
-                "tooltip": "Your account's AWS region that you will use to access AWS services.",
-                "description": "Your account's AWS region that you will use to access AWS services."
+                "tooltip": "Your account\u0027s AWS region that you will use to access AWS services.",
+                "description": "Your account\u0027s AWS region that you will use to access AWS services.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               },
               {
                 "title": "Role ARN",
@@ -1791,7 +1939,10 @@
                 "visible": true,
                 "placeholder": "arn:aws:iam::{{account_id}}:role/{{role_name}}",
                 "tooltip": "ARN of the role that you want assume to execute this action on AWS.",
-                "description": "ARN of the role that you want assume to execute this action on AWS."
+                "description": "ARN of the role that you want assume to execute this action on AWS.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               },
               {
                 "title": "Session Name",
@@ -1801,7 +1952,10 @@
                 "editable": true,
                 "visible": true,
                 "tooltip": "Name of the session that will be created to execute this action on AWS.",
-                "description": "Name of the session that will be created to execute this action on AWS."
+                "description": "Name of the session that will be created to execute this action on AWS.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               }
             ]
           }
@@ -1854,7 +2008,7 @@
           "editable": true,
           "visible": true,
           "tooltip": "Enable to assume a role",
-          "description": "Select this option to assume a role.Note: You must enable this option, i.e., this parameter is required, if you have specified IAM Role as the Configuration Type. If you have specified Access Credentials as the Configuration Type, then this parameter is optional.If you select this option, then you must specify the following parameters: AWS Region: Your account's AWS region that you will use to access AWS services. Role ARN: ARN of the role that you want to assume to execute this action on AWS. Session Name: Name of the session that will be created to execute this action on AWS.",
+          "description": "Select this option to assume a role.Note: You must enable this option, i.e., this parameter is required, if you have specified IAM Role as the Configuration Type. If you have specified Access Credentials as the Configuration Type, then this parameter is optional.If you select this option, then you must specify the following parameters: AWS Region: Your account\u0027s AWS region that you will use to access AWS services. Role ARN: ARN of the role that you want to assume to execute this action on AWS. Session Name: Name of the session that will be created to execute this action on AWS.",
           "value": false,
           "onchange": {
             "true": [
@@ -1866,8 +2020,11 @@
                 "type": "text",
                 "name": "aws_region",
                 "placeholder": "e.g. us-east-2",
-                "tooltip": "Your account's AWS region that you will use to access AWS services.",
-                "description": "Your account's AWS region that you will use to access AWS services."
+                "tooltip": "Your account\u0027s AWS region that you will use to access AWS services.",
+                "description": "Your account\u0027s AWS region that you will use to access AWS services.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               },
               {
                 "title": "Role ARN",
@@ -1878,7 +2035,10 @@
                 "visible": true,
                 "placeholder": "arn:aws:iam::{{account_id}}:role/{{role_name}}",
                 "tooltip": "ARN of the role that you want assume to execute this action on AWS.",
-                "description": "ARN of the role that you want assume to execute this action on AWS."
+                "description": "ARN of the role that you want assume to execute this action on AWS.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               },
               {
                 "title": "Session Name",
@@ -1888,7 +2048,10 @@
                 "editable": true,
                 "visible": true,
                 "tooltip": "Name of the session that will be created to execute this action on AWS.",
-                "description": "Name of the session that will be created to execute this action on AWS."
+                "description": "Name of the session that will be created to execute this action on AWS.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               }
             ]
           }
@@ -1974,7 +2137,7 @@
           "editable": true,
           "visible": true,
           "tooltip": "Enable to assume a role",
-          "description": "Select this option to assume a role.Note: You must enable this option, i.e., this parameter is required, if you have specified IAM Role as the Configuration Type. If you have specified Access Credentials as the Configuration Type, then this parameter is optional.If you select this option, then you must specify the following parameters: AWS Region: Your account's AWS region that you will use to access AWS services. Role ARN: ARN of the role that you want to assume to execute this action on AWS. Session Name: Name of the session that will be created to execute this action on AWS.",
+          "description": "Select this option to assume a role.Note: You must enable this option, i.e., this parameter is required, if you have specified IAM Role as the Configuration Type. If you have specified Access Credentials as the Configuration Type, then this parameter is optional.If you select this option, then you must specify the following parameters: AWS Region: Your account\u0027s AWS region that you will use to access AWS services. Role ARN: ARN of the role that you want to assume to execute this action on AWS. Session Name: Name of the session that will be created to execute this action on AWS.",
           "value": false,
           "onchange": {
             "true": [
@@ -1986,8 +2149,11 @@
                 "type": "text",
                 "name": "aws_region",
                 "placeholder": "e.g. us-east-2",
-                "tooltip": "Your account's AWS region that you will use to access AWS services.",
-                "description": "Your account's AWS region that you will use to access AWS services."
+                "tooltip": "Your account\u0027s AWS region that you will use to access AWS services.",
+                "description": "Your account\u0027s AWS region that you will use to access AWS services.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               },
               {
                 "title": "Role ARN",
@@ -1998,7 +2164,10 @@
                 "visible": true,
                 "placeholder": "arn:aws:iam::{{account_id}}:role/{{role_name}}",
                 "tooltip": "ARN of the role that you want assume to execute this action on AWS.",
-                "description": "ARN of the role that you want assume to execute this action on AWS."
+                "description": "ARN of the role that you want assume to execute this action on AWS.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               },
               {
                 "title": "Session Name",
@@ -2008,7 +2177,10 @@
                 "editable": true,
                 "visible": true,
                 "tooltip": "Name of the session that will be created to execute this action on AWS.",
-                "description": "Name of the session that will be created to execute this action on AWS."
+                "description": "Name of the session that will be created to execute this action on AWS.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               }
             ]
           }
@@ -2050,7 +2222,7 @@
           "editable": true,
           "visible": true,
           "tooltip": "Enable to assume a role",
-          "description": "Select this option to assume a role.Note: You must enable this option, i.e., this parameter is required, if you have specified IAM Role as the Configuration Type. If you have specified Access Credentials as the Configuration Type, then this parameter is optional.If you select this option, then you must specify the following parameters: AWS Region: Your account's AWS region that you will use to access AWS services. Role ARN: ARN of the role that you want to assume to execute this action on AWS. Session Name: Name of the session that will be created to execute this action on AWS.",
+          "description": "Select this option to assume a role.Note: You must enable this option, i.e., this parameter is required, if you have specified IAM Role as the Configuration Type. If you have specified Access Credentials as the Configuration Type, then this parameter is optional.If you select this option, then you must specify the following parameters: AWS Region: Your account\u0027s AWS region that you will use to access AWS services. Role ARN: ARN of the role that you want to assume to execute this action on AWS. Session Name: Name of the session that will be created to execute this action on AWS.",
           "value": false,
           "onchange": {
             "true": [
@@ -2062,8 +2234,11 @@
                 "type": "text",
                 "name": "aws_region",
                 "placeholder": "e.g. us-east-2",
-                "tooltip": "Your account's AWS region that you will use to access AWS services.",
-                "description": "Your account's AWS region that you will use to access AWS services."
+                "tooltip": "Your account\u0027s AWS region that you will use to access AWS services.",
+                "description": "Your account\u0027s AWS region that you will use to access AWS services.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               },
               {
                 "title": "Role ARN",
@@ -2074,7 +2249,10 @@
                 "visible": true,
                 "placeholder": "arn:aws:iam::{{account_id}}:role/{{role_name}}",
                 "tooltip": "ARN of the role that you want assume to execute this action on AWS.",
-                "description": "ARN of the role that you want assume to execute this action on AWS."
+                "description": "ARN of the role that you want assume to execute this action on AWS.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               },
               {
                 "title": "Session Name",
@@ -2084,7 +2262,10 @@
                 "editable": true,
                 "visible": true,
                 "tooltip": "Name of the session that will be created to execute this action on AWS.",
-                "description": "Name of the session that will be created to execute this action on AWS."
+                "description": "Name of the session that will be created to execute this action on AWS.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               }
             ]
           }
@@ -2160,7 +2341,7 @@
           "editable": true,
           "visible": true,
           "tooltip": "Enable to assume a role",
-          "description": "Select this option to assume a role.Note: You must enable this option, i.e., this parameter is required, if you have specified IAM Role as the Configuration Type. If you have specified Access Credentials as the Configuration Type, then this parameter is optional.If you select this option, then you must specify the following parameters: AWS Region: Your account's AWS region that you will use to access AWS services. Role ARN: ARN of the role that you want to assume to execute this action on AWS. Session Name: Name of the session that will be created to execute this action on AWS.",
+          "description": "Select this option to assume a role.Note: You must enable this option, i.e., this parameter is required, if you have specified IAM Role as the Configuration Type. If you have specified Access Credentials as the Configuration Type, then this parameter is optional.If you select this option, then you must specify the following parameters: AWS Region: Your account\u0027s AWS region that you will use to access AWS services. Role ARN: ARN of the role that you want to assume to execute this action on AWS. Session Name: Name of the session that will be created to execute this action on AWS.",
           "value": false,
           "onchange": {
             "true": [
@@ -2172,8 +2353,11 @@
                 "type": "text",
                 "name": "aws_region",
                 "placeholder": "e.g. us-east-2",
-                "tooltip": "Your account's AWS region that you will use to access AWS services.",
-                "description": "Your account's AWS region that you will use to access AWS services."
+                "tooltip": "Your account\u0027s AWS region that you will use to access AWS services.",
+                "description": "Your account\u0027s AWS region that you will use to access AWS services.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               },
               {
                 "title": "Role ARN",
@@ -2184,7 +2368,10 @@
                 "visible": true,
                 "placeholder": "arn:aws:iam::{{account_id}}:role/{{role_name}}",
                 "tooltip": "ARN of the role that you want assume to execute this action on AWS.",
-                "description": "ARN of the role that you want assume to execute this action on AWS."
+                "description": "ARN of the role that you want assume to execute this action on AWS.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               },
               {
                 "title": "Session Name",
@@ -2194,7 +2381,10 @@
                 "editable": true,
                 "visible": true,
                 "tooltip": "Name of the session that will be created to execute this action on AWS.",
-                "description": "Name of the session that will be created to execute this action on AWS."
+                "description": "Name of the session that will be created to execute this action on AWS.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               }
             ]
           }
@@ -2244,7 +2434,7 @@
           "name": "rule_action",
           "value": "DENY",
           "options": [
-              "ALLOW",
+            "ALLOW",
             "DENY"
           ],
           "tooltip": "Action that the rule must perform. Choose between DENY or ALLOW.",
@@ -2299,7 +2489,7 @@
           "editable": true,
           "visible": true,
           "tooltip": "Enable to assume a role",
-          "description": "Select this option to assume a role.Note: You must enable this option, i.e., this parameter is required, if you have specified IAM Role as the Configuration Type. If you have specified Access Credentials as the Configuration Type, then this parameter is optional.If you select this option, then you must specify the following parameters: AWS Region: Your account's AWS region that you will use to access AWS services. Role ARN: ARN of the role that you want to assume to execute this action on AWS. Session Name: Name of the session that will be created to execute this action on AWS.",
+          "description": "Select this option to assume a role.Note: You must enable this option, i.e., this parameter is required, if you have specified IAM Role as the Configuration Type. If you have specified Access Credentials as the Configuration Type, then this parameter is optional.If you select this option, then you must specify the following parameters: AWS Region: Your account\u0027s AWS region that you will use to access AWS services. Role ARN: ARN of the role that you want to assume to execute this action on AWS. Session Name: Name of the session that will be created to execute this action on AWS.",
           "value": false,
           "onchange": {
             "true": [
@@ -2311,8 +2501,11 @@
                 "type": "text",
                 "name": "aws_region",
                 "placeholder": "e.g. us-east-2",
-                "tooltip": "Your account's AWS region that you will use to access AWS services.",
-                "description": "Your account's AWS region that you will use to access AWS services."
+                "tooltip": "Your account\u0027s AWS region that you will use to access AWS services.",
+                "description": "Your account\u0027s AWS region that you will use to access AWS services.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               },
               {
                 "title": "Role ARN",
@@ -2323,7 +2516,10 @@
                 "visible": true,
                 "placeholder": "arn:aws:iam::{{account_id}}:role/{{role_name}}",
                 "tooltip": "ARN of the role that you want assume to execute this action on AWS.",
-                "description": "ARN of the role that you want assume to execute this action on AWS."
+                "description": "ARN of the role that you want assume to execute this action on AWS.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               },
               {
                 "title": "Session Name",
@@ -2333,7 +2529,10 @@
                 "editable": true,
                 "visible": true,
                 "tooltip": "Name of the session that will be created to execute this action on AWS.",
-                "description": "Name of the session that will be created to execute this action on AWS."
+                "description": "Name of the session that will be created to execute this action on AWS.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               }
             ]
           }
@@ -2357,9 +2556,9 @@
           "type": "text",
           "name": "filters",
           "value": "",
-          "placeholder": "e.g. [{'Name': 'vpc-id','Values': ['vpc-a01106c2']}].",
-          "tooltip": "Filters to describe Network ACLs. Format: [{'Name': 'string','Values': ['string']}]",
-          "description": "Filters based on which you want to retrieve details for network ACL from AWS EC2. Format of the filter is: [{'Name': 'string','Values': ['string']}] For example, [{'Name': 'vpc-id','Values': ['vpc-a01106c2']}]"
+          "placeholder": "e.g. [{\u0027Name\u0027: \u0027vpc-id\u0027,\u0027Values\u0027: [\u0027vpc-a01106c2\u0027]}].",
+          "tooltip": "Filters to describe Network ACLs. Format: [{\u0027Name\u0027: \u0027string\u0027,\u0027Values\u0027: [\u0027string\u0027]}]",
+          "description": "Filters based on which you want to retrieve details for network ACL from AWS EC2. Format of the filter is: [{\u0027Name\u0027: \u0027string\u0027,\u0027Values\u0027: [\u0027string\u0027]}] For example, [{\u0027Name\u0027: \u0027vpc-id\u0027,\u0027Values\u0027: [\u0027vpc-a01106c2\u0027]}]"
         }
       ],
       "enabled": true,
@@ -2418,7 +2617,7 @@
           "editable": true,
           "visible": true,
           "tooltip": "Enable to assume a role",
-          "description": "Select this option to assume a role.Note: You must enable this option, i.e., this parameter is required, if you have specified IAM Role as the Configuration Type. If you have specified Access Credentials as the Configuration Type, then this parameter is optional.If you select this option, then you must specify the following parameters: AWS Region: Your account's AWS region that you will use to access AWS services. Role ARN: ARN of the role that you want to assume to execute this action on AWS. Session Name: Name of the session that will be created to execute this action on AWS.",
+          "description": "Select this option to assume a role.Note: You must enable this option, i.e., this parameter is required, if you have specified IAM Role as the Configuration Type. If you have specified Access Credentials as the Configuration Type, then this parameter is optional.If you select this option, then you must specify the following parameters: AWS Region: Your account\u0027s AWS region that you will use to access AWS services. Role ARN: ARN of the role that you want to assume to execute this action on AWS. Session Name: Name of the session that will be created to execute this action on AWS.",
           "value": false,
           "onchange": {
             "true": [
@@ -2430,8 +2629,11 @@
                 "type": "text",
                 "name": "aws_region",
                 "placeholder": "e.g. us-east-2",
-                "tooltip": "Your account's AWS region that you will use to access AWS services.",
-                "description": "Your account's AWS region that you will use to access AWS services."
+                "tooltip": "Your account\u0027s AWS region that you will use to access AWS services.",
+                "description": "Your account\u0027s AWS region that you will use to access AWS services.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               },
               {
                 "title": "Role ARN",
@@ -2442,7 +2644,10 @@
                 "visible": true,
                 "placeholder": "arn:aws:iam::{{account_id}}:role/{{role_name}}",
                 "tooltip": "ARN of the role that you want assume to execute this action on AWS.",
-                "description": "ARN of the role that you want assume to execute this action on AWS."
+                "description": "ARN of the role that you want assume to execute this action on AWS.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               },
               {
                 "title": "Session Name",
@@ -2452,7 +2657,10 @@
                 "editable": true,
                 "visible": true,
                 "tooltip": "Name of the session that will be created to execute this action on AWS.",
-                "description": "Name of the session that will be created to execute this action on AWS."
+                "description": "Name of the session that will be created to execute this action on AWS.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               }
             ]
           }
@@ -2532,7 +2740,7 @@
           "editable": true,
           "visible": true,
           "tooltip": "Enable to assume a role",
-          "description": "Select this option to assume a role.Note: You must enable this option, i.e., this parameter is required, if you have specified IAM Role as the Configuration Type. If you have specified Access Credentials as the Configuration Type, then this parameter is optional.If you select this option, then you must specify the following parameters: AWS Region: Your account's AWS region that you will use to access AWS services. Role ARN: ARN of the role that you want to assume to execute this action on AWS. Session Name: Name of the session that will be created to execute this action on AWS.",
+          "description": "Select this option to assume a role.Note: You must enable this option, i.e., this parameter is required, if you have specified IAM Role as the Configuration Type. If you have specified Access Credentials as the Configuration Type, then this parameter is optional.If you select this option, then you must specify the following parameters: AWS Region: Your account\u0027s AWS region that you will use to access AWS services. Role ARN: ARN of the role that you want to assume to execute this action on AWS. Session Name: Name of the session that will be created to execute this action on AWS.",
           "value": false,
           "onchange": {
             "true": [
@@ -2544,8 +2752,11 @@
                 "type": "text",
                 "name": "aws_region",
                 "placeholder": "e.g. us-east-2",
-                "tooltip": "Your account's AWS region that you will use to access AWS services.",
-                "description": "Your account's AWS region that you will use to access AWS services."
+                "tooltip": "Your account\u0027s AWS region that you will use to access AWS services.",
+                "description": "Your account\u0027s AWS region that you will use to access AWS services.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               },
               {
                 "title": "Role ARN",
@@ -2556,7 +2767,10 @@
                 "visible": true,
                 "placeholder": "arn:aws:iam::{{account_id}}:role/{{role_name}}",
                 "tooltip": "ARN of the role that you want assume to execute this action on AWS.",
-                "description": "ARN of the role that you want assume to execute this action on AWS."
+                "description": "ARN of the role that you want assume to execute this action on AWS.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               },
               {
                 "title": "Session Name",
@@ -2566,7 +2780,10 @@
                 "editable": true,
                 "visible": true,
                 "tooltip": "Name of the session that will be created to execute this action on AWS.",
-                "description": "Name of the session that will be created to execute this action on AWS."
+                "description": "Name of the session that will be created to execute this action on AWS.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               }
             ]
           }
@@ -2614,7 +2831,7 @@
           "editable": true,
           "visible": true,
           "tooltip": "Enable to assume a role",
-          "description": "Select this option to assume a role.Note: You must enable this option, i.e., this parameter is required, if you have specified IAM Role as the Configuration Type. If you have specified Access Credentials as the Configuration Type, then this parameter is optional.If you select this option, then you must specify the following parameters: AWS Region: Your account's AWS region that you will use to access AWS services. Role ARN: ARN of the role that you want to assume to execute this action on AWS. Session Name: Name of the session that will be created to execute this action on AWS.",
+          "description": "Select this option to assume a role.Note: You must enable this option, i.e., this parameter is required, if you have specified IAM Role as the Configuration Type. If you have specified Access Credentials as the Configuration Type, then this parameter is optional.If you select this option, then you must specify the following parameters: AWS Region: Your account\u0027s AWS region that you will use to access AWS services. Role ARN: ARN of the role that you want to assume to execute this action on AWS. Session Name: Name of the session that will be created to execute this action on AWS.",
           "value": false,
           "onchange": {
             "true": [
@@ -2626,8 +2843,11 @@
                 "type": "text",
                 "name": "aws_region",
                 "placeholder": "e.g. us-east-2",
-                "tooltip": "Your account's AWS region that you will use to access AWS services.",
-                "description": "Your account's AWS region that you will use to access AWS services."
+                "tooltip": "Your account\u0027s AWS region that you will use to access AWS services.",
+                "description": "Your account\u0027s AWS region that you will use to access AWS services.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               },
               {
                 "title": "Role ARN",
@@ -2638,7 +2858,10 @@
                 "visible": true,
                 "placeholder": "arn:aws:iam::{{account_id}}:role/{{role_name}}",
                 "tooltip": "ARN of the role that you want assume to execute this action on AWS.",
-                "description": "ARN of the role that you want assume to execute this action on AWS."
+                "description": "ARN of the role that you want assume to execute this action on AWS.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               },
               {
                 "title": "Session Name",
@@ -2648,7 +2871,10 @@
                 "editable": true,
                 "visible": true,
                 "tooltip": "Name of the session that will be created to execute this action on AWS.",
-                "description": "Name of the session that will be created to execute this action on AWS."
+                "description": "Name of the session that will be created to execute this action on AWS.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               }
             ]
           }
@@ -2689,7 +2915,7 @@
           "editable": true,
           "visible": true,
           "tooltip": "Enable to assume a role",
-          "description": "Select this option to assume a role.Note: You must enable this option, i.e., this parameter is required, if you have specified IAM Role as the Configuration Type. If you have specified Access Credentials as the Configuration Type, then this parameter is optional.If you select this option, then you must specify the following parameters: AWS Region: Your account's AWS region that you will use to access AWS services. Role ARN: ARN of the role that you want to assume to execute this action on AWS. Session Name: Name of the session that will be created to execute this action on AWS.",
+          "description": "Select this option to assume a role.Note: You must enable this option, i.e., this parameter is required, if you have specified IAM Role as the Configuration Type. If you have specified Access Credentials as the Configuration Type, then this parameter is optional.If you select this option, then you must specify the following parameters: AWS Region: Your account\u0027s AWS region that you will use to access AWS services. Role ARN: ARN of the role that you want to assume to execute this action on AWS. Session Name: Name of the session that will be created to execute this action on AWS.",
           "value": false,
           "onchange": {
             "true": [
@@ -2701,8 +2927,11 @@
                 "type": "text",
                 "name": "aws_region",
                 "placeholder": "e.g. us-east-2",
-                "tooltip": "Your account's AWS region that you will use to access AWS services.",
-                "description": "Your account's AWS region that you will use to access AWS services."
+                "tooltip": "Your account\u0027s AWS region that you will use to access AWS services.",
+                "description": "Your account\u0027s AWS region that you will use to access AWS services.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               },
               {
                 "title": "Role ARN",
@@ -2713,7 +2942,10 @@
                 "visible": true,
                 "placeholder": "arn:aws:iam::{{account_id}}:role/{{role_name}}",
                 "tooltip": "ARN of the role that you want assume to execute this action on AWS.",
-                "description": "ARN of the role that you want assume to execute this action on AWS."
+                "description": "ARN of the role that you want assume to execute this action on AWS.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               },
               {
                 "title": "Session Name",
@@ -2723,7 +2955,10 @@
                 "editable": true,
                 "visible": true,
                 "tooltip": "Name of the session that will be created to execute this action on AWS.",
-                "description": "Name of the session that will be created to execute this action on AWS."
+                "description": "Name of the session that will be created to execute this action on AWS.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               }
             ]
           }
@@ -2780,7 +3015,7 @@
           "editable": true,
           "visible": true,
           "tooltip": "Enable to assume a role",
-          "description": "Select this option to assume a role.Note: You must enable this option, i.e., this parameter is required, if you have specified IAM Role as the Configuration Type. If you have specified Access Credentials as the Configuration Type, then this parameter is optional.If you select this option, then you must specify the following parameters: AWS Region: Your account's AWS region that you will use to access AWS services. Role ARN: ARN of the role that you want to assume to execute this action on AWS. Session Name: Name of the session that will be created to execute this action on AWS.",
+          "description": "Select this option to assume a role.Note: You must enable this option, i.e., this parameter is required, if you have specified IAM Role as the Configuration Type. If you have specified Access Credentials as the Configuration Type, then this parameter is optional.If you select this option, then you must specify the following parameters: AWS Region: Your account\u0027s AWS region that you will use to access AWS services. Role ARN: ARN of the role that you want to assume to execute this action on AWS. Session Name: Name of the session that will be created to execute this action on AWS.",
           "value": false,
           "onchange": {
             "true": [
@@ -2792,8 +3027,11 @@
                 "type": "text",
                 "name": "aws_region",
                 "placeholder": "e.g. us-east-2",
-                "tooltip": "Your account's AWS region that you will use to access AWS services.",
-                "description": "Your account's AWS region that you will use to access AWS services."
+                "tooltip": "Your account\u0027s AWS region that you will use to access AWS services.",
+                "description": "Your account\u0027s AWS region that you will use to access AWS services.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               },
               {
                 "title": "Role ARN",
@@ -2804,7 +3042,10 @@
                 "visible": true,
                 "placeholder": "arn:aws:iam::{{account_id}}:role/{{role_name}}",
                 "tooltip": "ARN of the role that you want assume to execute this action on AWS.",
-                "description": "ARN of the role that you want assume to execute this action on AWS."
+                "description": "ARN of the role that you want assume to execute this action on AWS.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               },
               {
                 "title": "Session Name",
@@ -2814,7 +3055,10 @@
                 "editable": true,
                 "visible": true,
                 "tooltip": "Name of the session that will be created to execute this action on AWS.",
-                "description": "Name of the session that will be created to execute this action on AWS."
+                "description": "Name of the session that will be created to execute this action on AWS.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               }
             ]
           }
@@ -2888,7 +3132,7 @@
           "editable": true,
           "visible": true,
           "tooltip": "Enable to assume a role",
-          "description": "Select this option to assume a role.Note: You must enable this option, i.e., this parameter is required, if you have specified IAM Role as the Configuration Type. If you have specified Access Credentials as the Configuration Type, then this parameter is optional.If you select this option, then you must specify the following parameters: AWS Region: Your account's AWS region that you will use to access AWS services. Role ARN: ARN of the role that you want to assume to execute this action on AWS. Session Name: Name of the session that will be created to execute this action on AWS.",
+          "description": "Select this option to assume a role.Note: You must enable this option, i.e., this parameter is required, if you have specified IAM Role as the Configuration Type. If you have specified Access Credentials as the Configuration Type, then this parameter is optional.If you select this option, then you must specify the following parameters: AWS Region: Your account\u0027s AWS region that you will use to access AWS services. Role ARN: ARN of the role that you want to assume to execute this action on AWS. Session Name: Name of the session that will be created to execute this action on AWS.",
           "value": false,
           "onchange": {
             "true": [
@@ -2900,8 +3144,11 @@
                 "type": "text",
                 "name": "aws_region",
                 "placeholder": "e.g. us-east-2",
-                "tooltip": "Your account's AWS region that you will use to access AWS services.",
-                "description": "Your account's AWS region that you will use to access AWS services."
+                "tooltip": "Your account\u0027s AWS region that you will use to access AWS services.",
+                "description": "Your account\u0027s AWS region that you will use to access AWS services.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               },
               {
                 "title": "Role ARN",
@@ -2912,7 +3159,10 @@
                 "visible": true,
                 "placeholder": "arn:aws:iam::{{account_id}}:role/{{role_name}}",
                 "tooltip": "ARN of the role that you want assume to execute this action on AWS.",
-                "description": "ARN of the role that you want assume to execute this action on AWS."
+                "description": "ARN of the role that you want assume to execute this action on AWS.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               },
               {
                 "title": "Session Name",
@@ -2922,7 +3172,10 @@
                 "editable": true,
                 "visible": true,
                 "tooltip": "Name of the session that will be created to execute this action on AWS.",
-                "description": "Name of the session that will be created to execute this action on AWS."
+                "description": "Name of the session that will be created to execute this action on AWS.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               }
             ]
           }
@@ -3006,7 +3259,7 @@
           "editable": true,
           "visible": true,
           "tooltip": "Enable to assume a role",
-          "description": "Select this option to assume a role.Note: You must enable this option, i.e., this parameter is required, if you have specified IAM Role as the Configuration Type. If you have specified Access Credentials as the Configuration Type, then this parameter is optional.If you select this option, then you must specify the following parameters: AWS Region: Your account's AWS region that you will use to access AWS services. Role ARN: ARN of the role that you want to assume to execute this action on AWS. Session Name: Name of the session that will be created to execute this action on AWS.",
+          "description": "Select this option to assume a role.Note: You must enable this option, i.e., this parameter is required, if you have specified IAM Role as the Configuration Type. If you have specified Access Credentials as the Configuration Type, then this parameter is optional.If you select this option, then you must specify the following parameters: AWS Region: Your account\u0027s AWS region that you will use to access AWS services. Role ARN: ARN of the role that you want to assume to execute this action on AWS. Session Name: Name of the session that will be created to execute this action on AWS.",
           "value": false,
           "onchange": {
             "true": [
@@ -3018,8 +3271,11 @@
                 "type": "text",
                 "name": "aws_region",
                 "placeholder": "e.g. us-east-2",
-                "tooltip": "Your account's AWS region that you will use to access AWS services.",
-                "description": "Your account's AWS region that you will use to access AWS services."
+                "tooltip": "Your account\u0027s AWS region that you will use to access AWS services.",
+                "description": "Your account\u0027s AWS region that you will use to access AWS services.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               },
               {
                 "title": "Role ARN",
@@ -3030,7 +3286,10 @@
                 "visible": true,
                 "placeholder": "arn:aws:iam::{{account_id}}:role/{{role_name}}",
                 "tooltip": "ARN of the role that you want assume to execute this action on AWS.",
-                "description": "ARN of the role that you want assume to execute this action on AWS."
+                "description": "ARN of the role that you want assume to execute this action on AWS.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               },
               {
                 "title": "Session Name",
@@ -3040,7 +3299,10 @@
                 "editable": true,
                 "visible": true,
                 "tooltip": "Name of the session that will be created to execute this action on AWS.",
-                "description": "Name of the session that will be created to execute this action on AWS."
+                "description": "Name of the session that will be created to execute this action on AWS.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               }
             ]
           }
@@ -3063,8 +3325,8 @@
           "visible": true,
           "type": "text",
           "name": "group_list",
-          "tooltip": "One or more security group IDs. You can give multiple group ids like 'sg-3578605d', 'sg-f1445c99' or ['sg-3578605d', 'sg-f1445c99']",
-          "placeholder": "e.g. ['sg-3578605d', 'sg-f1445c99']",
+          "tooltip": "One or more security group IDs. You can give multiple group ids like \u0027sg-3578605d\u0027, \u0027sg-f1445c99\u0027 or [\u0027sg-3578605d\u0027, \u0027sg-f1445c99\u0027]",
+          "placeholder": "e.g. [\u0027sg-3578605d\u0027, \u0027sg-f1445c99\u0027]",
           "description": "Name(s) or ID(s) of the Security Group(s) to which you want to add the specified instance on AWS EC2. The Security Group ID(s) or Name(s) must be specified in the CSV or list format.For example, [\"default\", \"launch-wizard-3\", \"sg-9fc7dcf7\"]"
         }
       ],
@@ -3090,7 +3352,7 @@
           "editable": true,
           "visible": true,
           "tooltip": "Enable to assume a role",
-          "description": "Select this option to assume a role.Note: You must enable this option, i.e., this parameter is required, if you have specified IAM Role as the Configuration Type. If you have specified Access Credentials as the Configuration Type, then this parameter is optional.If you select this option, then you must specify the following parameters: AWS Region: Your account's AWS region that you will use to access AWS services. Role ARN: ARN of the role that you want to assume to execute this action on AWS. Session Name: Name of the session that will be created to execute this action on AWS.",
+          "description": "Select this option to assume a role.Note: You must enable this option, i.e., this parameter is required, if you have specified IAM Role as the Configuration Type. If you have specified Access Credentials as the Configuration Type, then this parameter is optional.If you select this option, then you must specify the following parameters: AWS Region: Your account\u0027s AWS region that you will use to access AWS services. Role ARN: ARN of the role that you want to assume to execute this action on AWS. Session Name: Name of the session that will be created to execute this action on AWS.",
           "value": false,
           "onchange": {
             "true": [
@@ -3102,8 +3364,11 @@
                 "type": "text",
                 "name": "aws_region",
                 "placeholder": "e.g. us-east-2",
-                "tooltip": "Your account's AWS region that you will use to access AWS services.",
-                "description": "Your account's AWS region that you will use to access AWS services."
+                "tooltip": "Your account\u0027s AWS region that you will use to access AWS services.",
+                "description": "Your account\u0027s AWS region that you will use to access AWS services.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               },
               {
                 "title": "Role ARN",
@@ -3114,7 +3379,10 @@
                 "visible": true,
                 "placeholder": "arn:aws:iam::{{account_id}}:role/{{role_name}}",
                 "tooltip": "ARN of the role that you want assume to execute this action on AWS.",
-                "description": "ARN of the role that you want assume to execute this action on AWS."
+                "description": "ARN of the role that you want assume to execute this action on AWS.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               },
               {
                 "title": "Session Name",
@@ -3124,7 +3392,10 @@
                 "editable": true,
                 "visible": true,
                 "tooltip": "Name of the session that will be created to execute this action on AWS.",
-                "description": "Name of the session that will be created to execute this action on AWS."
+                "description": "Name of the session that will be created to execute this action on AWS.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               }
             ]
           }
@@ -3177,7 +3448,7 @@
           "editable": true,
           "visible": true,
           "tooltip": "Enable to assume a role",
-          "description": "Select this option to assume a role.Note: You must enable this option, i.e., this parameter is required, if you have specified IAM Role as the Configuration Type. If you have specified Access Credentials as the Configuration Type, then this parameter is optional.If you select this option, then you must specify the following parameters: AWS Region: Your account's AWS region that you will use to access AWS services. Role ARN: ARN of the role that you want to assume to execute this action on AWS. Session Name: Name of the session that will be created to execute this action on AWS.",
+          "description": "Select this option to assume a role.Note: You must enable this option, i.e., this parameter is required, if you have specified IAM Role as the Configuration Type. If you have specified Access Credentials as the Configuration Type, then this parameter is optional.If you select this option, then you must specify the following parameters: AWS Region: Your account\u0027s AWS region that you will use to access AWS services. Role ARN: ARN of the role that you want to assume to execute this action on AWS. Session Name: Name of the session that will be created to execute this action on AWS.",
           "value": false,
           "onchange": {
             "true": [
@@ -3189,8 +3460,11 @@
                 "type": "text",
                 "name": "aws_region",
                 "placeholder": "e.g. us-east-2",
-                "tooltip": "Your account's AWS region that you will use to access AWS services.",
-                "description": "Your account's AWS region that you will use to access AWS services."
+                "tooltip": "Your account\u0027s AWS region that you will use to access AWS services.",
+                "description": "Your account\u0027s AWS region that you will use to access AWS services.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               },
               {
                 "title": "Role ARN",
@@ -3201,7 +3475,10 @@
                 "visible": true,
                 "placeholder": "arn:aws:iam::{{account_id}}:role/{{role_name}}",
                 "tooltip": "ARN of the role that you want assume to execute this action on AWS.",
-                "description": "ARN of the role that you want assume to execute this action on AWS."
+                "description": "ARN of the role that you want assume to execute this action on AWS.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               },
               {
                 "title": "Session Name",
@@ -3211,7 +3488,10 @@
                 "editable": true,
                 "visible": true,
                 "tooltip": "Name of the session that will be created to execute this action on AWS.",
-                "description": "Name of the session that will be created to execute this action on AWS."
+                "description": "Name of the session that will be created to execute this action on AWS.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               }
             ]
           }
@@ -3269,7 +3549,7 @@
           "editable": true,
           "visible": true,
           "tooltip": "Enable to assume a role",
-          "description": "Select this option to assume a role.Note: You must enable this option, i.e., this parameter is required, if you have specified IAM Role as the Configuration Type. If you have specified Access Credentials as the Configuration Type, then this parameter is optional.If you select this option, then you must specify the following parameters: AWS Region: Your account's AWS region that you will use to access AWS services. Role ARN: ARN of the role that you want to assume to execute this action on AWS. Session Name: Name of the session that will be created to execute this action on AWS.",
+          "description": "Select this option to assume a role.Note: You must enable this option, i.e., this parameter is required, if you have specified IAM Role as the Configuration Type. If you have specified Access Credentials as the Configuration Type, then this parameter is optional.If you select this option, then you must specify the following parameters: AWS Region: Your account\u0027s AWS region that you will use to access AWS services. Role ARN: ARN of the role that you want to assume to execute this action on AWS. Session Name: Name of the session that will be created to execute this action on AWS.",
           "value": false,
           "onchange": {
             "true": [
@@ -3281,8 +3561,11 @@
                 "type": "text",
                 "name": "aws_region",
                 "placeholder": "e.g. us-east-2",
-                "tooltip": "Your account's AWS region that you will use to access AWS services.",
-                "description": "Your account's AWS region that you will use to access AWS services."
+                "tooltip": "Your account\u0027s AWS region that you will use to access AWS services.",
+                "description": "Your account\u0027s AWS region that you will use to access AWS services.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               },
               {
                 "title": "Role ARN",
@@ -3293,7 +3576,10 @@
                 "visible": true,
                 "placeholder": "arn:aws:iam::{{account_id}}:role/{{role_name}}",
                 "tooltip": "ARN of the role that you want assume to execute this action on AWS.",
-                "description": "ARN of the role that you want assume to execute this action on AWS."
+                "description": "ARN of the role that you want assume to execute this action on AWS.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               },
               {
                 "title": "Session Name",
@@ -3303,7 +3589,10 @@
                 "editable": true,
                 "visible": true,
                 "tooltip": "Name of the session that will be created to execute this action on AWS.",
-                "description": "Name of the session that will be created to execute this action on AWS."
+                "description": "Name of the session that will be created to execute this action on AWS.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               }
             ]
           }
@@ -3361,7 +3650,7 @@
           "editable": true,
           "visible": true,
           "tooltip": "Enable to assume a role",
-          "description": "Select this option to assume a role.Note: You must enable this option, i.e., this parameter is required, if you have specified IAM Role as the Configuration Type. If you have specified Access Credentials as the Configuration Type, then this parameter is optional.If you select this option, then you must specify the following parameters: AWS Region: Your account's AWS region that you will use to access AWS services. Role ARN: ARN of the role that you want to assume to execute this action on AWS. Session Name: Name of the session that will be created to execute this action on AWS.",
+          "description": "Select this option to assume a role.Note: You must enable this option, i.e., this parameter is required, if you have specified IAM Role as the Configuration Type. If you have specified Access Credentials as the Configuration Type, then this parameter is optional.If you select this option, then you must specify the following parameters: AWS Region: Your account\u0027s AWS region that you will use to access AWS services. Role ARN: ARN of the role that you want to assume to execute this action on AWS. Session Name: Name of the session that will be created to execute this action on AWS.",
           "value": false,
           "onchange": {
             "true": [
@@ -3373,8 +3662,11 @@
                 "type": "text",
                 "name": "aws_region",
                 "placeholder": "e.g. us-east-2",
-                "tooltip": "Your account's AWS region that you will use to access AWS services.",
-                "description": "Your account's AWS region that you will use to access AWS services."
+                "tooltip": "Your account\u0027s AWS region that you will use to access AWS services.",
+                "description": "Your account\u0027s AWS region that you will use to access AWS services.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               },
               {
                 "title": "Role ARN",
@@ -3385,7 +3677,10 @@
                 "visible": true,
                 "placeholder": "arn:aws:iam::{{account_id}}:role/{{role_name}}",
                 "tooltip": "ARN of the role that you want assume to execute this action on AWS.",
-                "description": "ARN of the role that you want assume to execute this action on AWS."
+                "description": "ARN of the role that you want assume to execute this action on AWS.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               },
               {
                 "title": "Session Name",
@@ -3395,7 +3690,10 @@
                 "editable": true,
                 "visible": true,
                 "tooltip": "Name of the session that will be created to execute this action on AWS.",
-                "description": "Name of the session that will be created to execute this action on AWS."
+                "description": "Name of the session that will be created to execute this action on AWS.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               }
             ]
           }
@@ -3452,7 +3750,7 @@
           "editable": true,
           "visible": true,
           "tooltip": "Enable to assume a role",
-          "description": "Select this option to assume a role.Note: You must enable this option, i.e., this parameter is required, if you have specified IAM Role as the Configuration Type. If you have specified Access Credentials as the Configuration Type, then this parameter is optional.If you select this option, then you must specify the following parameters: AWS Region: Your account's AWS region that you will use to access AWS services. Role ARN: ARN of the role that you want to assume to execute this action on AWS. Session Name: Name of the session that will be created to execute this action on AWS.",
+          "description": "Select this option to assume a role.Note: You must enable this option, i.e., this parameter is required, if you have specified IAM Role as the Configuration Type. If you have specified Access Credentials as the Configuration Type, then this parameter is optional.If you select this option, then you must specify the following parameters: AWS Region: Your account\u0027s AWS region that you will use to access AWS services. Role ARN: ARN of the role that you want to assume to execute this action on AWS. Session Name: Name of the session that will be created to execute this action on AWS.",
           "value": false,
           "onchange": {
             "true": [
@@ -3464,8 +3762,11 @@
                 "type": "text",
                 "name": "aws_region",
                 "placeholder": "e.g. us-east-2",
-                "tooltip": "Your account's AWS region that you will use to access AWS services.",
-                "description": "Your account's AWS region that you will use to access AWS services."
+                "tooltip": "Your account\u0027s AWS region that you will use to access AWS services.",
+                "description": "Your account\u0027s AWS region that you will use to access AWS services.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               },
               {
                 "title": "Role ARN",
@@ -3476,7 +3777,10 @@
                 "visible": true,
                 "placeholder": "arn:aws:iam::{{account_id}}:role/{{role_name}}",
                 "tooltip": "ARN of the role that you want assume to execute this action on AWS.",
-                "description": "ARN of the role that you want assume to execute this action on AWS."
+                "description": "ARN of the role that you want assume to execute this action on AWS.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               },
               {
                 "title": "Session Name",
@@ -3486,7 +3790,10 @@
                 "editable": true,
                 "visible": true,
                 "tooltip": "Name of the session that will be created to execute this action on AWS.",
-                "description": "Name of the session that will be created to execute this action on AWS."
+                "description": "Name of the session that will be created to execute this action on AWS.",
+                "isOnChange": true,
+                "onChangeParam": "Assume a Role",
+                "onChangeOption": "true"
               }
             ]
           }

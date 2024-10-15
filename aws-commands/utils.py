@@ -8,11 +8,12 @@ import datetime
 import boto3
 import json
 import requests
+import os
+import subprocess
 from connectors.core.connector import get_logger, ConnectorError
 
 logger = get_logger('aws-commands')
 TEMP_CRED_ENDPOINT = 'http://169.254.169.254/latest/meta-data/iam/security-credentials/{}'
-
 
 def _change_date_format(obj):
     if isinstance(obj, datetime.datetime):
@@ -57,7 +58,6 @@ def _assume_a_role(data, params, aws_region):
         logger.exception(Err)
         raise ConnectorError(Err)
 
-
 def _get_session(config, params):
     try:
         config_type = config.get('config_type')
@@ -99,6 +99,80 @@ def _get_aws_client(config, params, service):
         logger.exception(Err)
         raise ConnectorError(Err)
 
+def _get_cli_environment(config, params):
+    try:
+        # Step 1: Create a boto3 session (this could be an assumed role session)
+        aws_session = _get_session(config, params)
+
+        # Step 2: Get credentials and region from the session
+        credentials = aws_session.get_credentials()
+        region_name = aws_session.region_name
+        access_key = credentials.access_key
+        secret_key = credentials.secret_key
+        session_token = credentials.token  # This will be None if not an assumed role
+
+        # Step 3: Prepare the environment by copying the current environment
+        aws_env = os.environ.copy()
+
+        # Remove any existing AWS_* environment variables
+        for key in list(aws_env.keys()):
+            if key.startswith("AWS_"):
+                del aws_env[key]
+
+        # Set the required AWS_* variables
+        aws_env["AWS_ACCESS_KEY_ID"] = access_key
+        aws_env["AWS_SECRET_ACCESS_KEY"] = secret_key
+        aws_env["AWS_DEFAULT_REGION"] = region_name
+
+        # Include /usr/local/bin path for aws cli
+        aws_env["PATH"] = f"{aws_env['PATH']}:/usr/local/bin"
+
+        # If session_token exists, set the AWS_SESSION_TOKEN
+        if session_token:
+            aws_env["AWS_SESSION_TOKEN"] = session_token
+
+        return aws_env
+    except Exception as Err:
+        logger.exception(Err)
+        raise ConnectorError(Err)
+
+def _run_aws_cli(aws_env, command, optional_parameters=""):
+    try:
+        # Execute the AWS CLI command
+        logger.info("helloworld")
+        result = subprocess.run(
+            ["aws"] + command.split() + optional_parameters.split(),  # Dynamically pass command args
+            capture_output=True,
+            text=True,
+            check=False,  # Don't raise an exception for non-zero exit codes
+            env=aws_env
+        )
+
+        # Try to parse stdout as JSON
+        try:
+            result_dict = json.loads(result.stdout)
+
+            # Update datetime format
+            result_dict = json.dumps(result_dict, default=_change_date_format, indent=4)
+            print(result_dict)
+            result_dict = json.loads(result_dict)
+
+        except json.JSONDecodeError:
+            result_dict = result.stdout  # Fallback if it's not valid JSON
+
+        # Return exit code, result dictionary (or stdout), and logs
+        return {
+            'exit_code': result.returncode,
+            'result_dict': result_dict,
+            'log': result.stderr
+        }
+
+    except Exception as e:
+        return {
+            'exit_code': 1,
+            'result_dict': None,
+            'log': str(e)
+        }
 
 def _get_policy_roles(aws_client, policy_role_list):
     try:

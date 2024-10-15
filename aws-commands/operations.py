@@ -7,11 +7,27 @@
 import json
 import boto3
 from .network_acl_actions import *
+from connectors.core.connector import get_logger, ConnectorError
 from .utils import _get_aws_client, _change_date_format, _is_mfa_device, _get_user_policies, _get_user_groups_details, \
-    _get_temp_credentials, _get_list_from_str_or_list, _get_group_ids, _get_aws_resource
+    _get_temp_credentials, _get_list_from_str_or_list, _get_group_ids, _get_aws_resource, \
+    _get_cli_environment, _run_aws_cli
 
 logger = get_logger('aws-commands')
 TEMP_CRED_ENDPOINT = 'http://169.254.169.254/latest/meta-data/iam/security-credentials/{}'
+
+def generic_command(config, params):
+    try:
+        aws_env = _get_cli_environment(config, params)
+        aws_cli_result = _run_aws_cli(aws_env=aws_env,
+                                      command=params.get('command'),
+                                      optional_parameters=params.get('optional_parameters'))
+        aws_response = aws_cli_result
+        if aws_response.get("exit_code") == 0:
+            return aws_response.get("result_dict")
+        raise ConnectorError(str(aws_response.get("log")))
+    except Exception as Err:
+        logger.exception(Err)
+        raise ConnectorError(Err)
 
 
 def describe_user(config, params):
@@ -471,6 +487,8 @@ def delete_security_group(config, params):
 
 
 aws_operations = {
+    'generic_command': generic_command,
+
     'describe_instance': describe_instance,
     'attach_instance_to_auto_scaling_group': attach_instance_to_auto_scaling_group,
     'detach_instance_from_autoscaling_group': detach_instance_from_autoscaling_group,
