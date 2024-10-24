@@ -3,8 +3,8 @@
   "data": [
     {
       "@type": "WorkflowCollection",
-      "name": "Sample - AWS EC2 - 3.1.1",
-      "description": "Sample playbooks for \"AWS EC2\" connector. If you are planning to use any of the sample playbooks in your environment, ensure that you clone those playbooks and move them to a different collection, since the sample playbook collection gets deleted during connector upgrade and delete.",
+      "name": "Sample - AWS Commands - 3.1.1",
+      "description": "Sample playbooks for \"AWS Commands\" connector. If you are planning to use any of the sample playbooks in your environment, ensure that you clone those playbooks and move them to a different collection, since the sample playbook collection gets deleted during connector upgrade and delete.",
       "visible": true,
       "image": "/api/3/images/5aebaa18-a6b8-416a-b8be-f5d61f4b6111",
       "uuid": "a58b6104-95f8-4beb-9bdd-0d031dce22ee",
@@ -15,9 +15,9 @@
           "triggerLimit": null,
           "name": "Volume: Detach Volume",
           "aliasName": null,
-          "description": "Detaches a volume from an AWS EC2 instance based on the volume ID, Device Name, and instance ID you have specified.",
+          "description": "Detaches a volume from an AWS Commands instance based on the volume ID, Device Name, and instance ID you have specified.",
           "collection": "/api/3/workflow_collections/a58b6104-95f8-4beb-9bdd-0d031dce22ee",
-          "tag": "#AWS EC2",
+          "tag": "#AWS Commands",
           "isActive": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
@@ -78,7 +78,7 @@
               "description": null,
               "arguments": {
                 "route": "b7549d2f-66d4-4b8e-bcce-019f2ee25206",
-                "title": "AWS EC2: Detach Volume",
+                "title": "AWS Commands: Detach Volume",
                 "resources": [
                   "alerts"
                 ],
@@ -124,7 +124,7 @@
           "uuid": "0af0daf4-dd6f-4e01-a2db-db644374ee47",
           "recordTags": [
             "AWS",
-            "AWS EC2"
+            "AWS Commands"
           ],
           "isPrivate": false,
           "owners": []
@@ -134,9 +134,9 @@
           "triggerLimit": null,
           "name": "Detach Instance From Auto Scaling Group",
           "aliasName": null,
-          "description": "Detaches an EC2 instance from the auto scaling group on AWS EC2 based on the auto scaling group name and instance ID (s) you have specified.",
+          "description": "Detaches an EC2 instance from the auto scaling group on AWS Commands based on the auto scaling group name and instance ID (s) you have specified.",
           "collection": "/api/3/workflow_collections/a58b6104-95f8-4beb-9bdd-0d031dce22ee",
-          "tag": "#AWS EC2",
+          "tag": "#AWS Commands",
           "isActive": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
@@ -150,7 +150,7 @@
               "description": null,
               "arguments": {
                 "route": "3140b3a3-83ee-4847-b2fa-26fdc0fd515a",
-                "title": "AWS EC2: Detach Instance From Auto Scaling Group",
+                "title": "AWS Commands: Detach Instance From Auto Scaling Group",
                 "resources": [
                   "alerts"
                 ],
@@ -223,7 +223,7 @@
           "uuid": "164f938b-e092-4378-83c3-2b322a9e945f",
           "recordTags": [
             "AWS",
-            "AWS EC2"
+            "AWS Commands"
           ],
           "isPrivate": false,
           "owners": []
@@ -233,9 +233,9 @@
           "triggerLimit": null,
           "name": "Attach Instance To Auto Scaling Group",
           "aliasName": null,
-          "description": "Attaches a running instance to the auto scaling group on AWS EC2 based on the auto scaling group name and instance ID (s) you have specified.",
+          "description": "Attaches a running instance to the auto scaling group on AWS Commands based on the auto scaling group name and instance ID (s) you have specified.",
           "collection": "/api/3/workflow_collections/a58b6104-95f8-4beb-9bdd-0d031dce22ee",
-          "tag": "#AWS EC2",
+          "tag": "#AWS Commands",
           "isActive": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
@@ -249,7 +249,7 @@
               "description": null,
               "arguments": {
                 "route": "09a1aeb2-13f3-4be5-a6b3-5aa4c706d722",
-                "title": "AWS EC2: Attach Instance To Auto Scaling Group",
+                "title": "AWS Commands: Attach Instance To Auto Scaling Group",
                 "resources": [
                   "alerts"
                 ],
@@ -282,7 +282,7 @@
               "name": "Attach Instance To Auto Scaling Group",
               "description": null,
               "arguments": {
-                "name": "AWS EC2",
+                "name": "AWS Commands",
                 "config": "2b4ed8be-f3b3-4be4-b241-02c3b7b2167b",
                 "params": {
                   "assume_role": "",
@@ -319,7 +319,7 @@
           "uuid": "1ebda3ae-e17c-4f1e-8224-4df18d7db429",
           "recordTags": [
             "AWS",
-            "AWS EC2"
+            "AWS Commands"
           ],
           "isPrivate": false,
           "owners": []
@@ -329,9 +329,9 @@
           "triggerLimit": null,
           "name": "Instance: Reboot Instance",
           "aliasName": null,
-          "description": "Reboots an instance you have specified using the instance ID on AWS EC2.",
+          "description": "Reboots an instance you have specified using the instance ID on AWS Commands.",
           "collection": "/api/3/workflow_collections/a58b6104-95f8-4beb-9bdd-0d031dce22ee",
-          "tag": "#AWS EC2",
+          "tag": "#AWS Commands",
           "isActive": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
@@ -344,7 +344,7 @@
               "name": "Reboot Instance",
               "description": null,
               "arguments": {
-                "name": "AWS EC2",
+                "name": "AWS Commands",
                 "config": "2b4ed8be-f3b3-4be4-b241-02c3b7b2167b",
                 "params": {
                   "assume_role": "",
@@ -370,7 +370,7 @@
               "description": null,
               "arguments": {
                 "route": "65e2d52d-b66e-4960-902c-7a458a84c460",
-                "title": "AWS EC2: Reboot Instance",
+                "title": "AWS Commands: Reboot Instance",
                 "resources": [
                   "alerts"
                 ],
@@ -416,7 +416,7 @@
           "uuid": "2b0513a1-14d8-43dc-9cd0-bc13da0b1722",
           "recordTags": [
             "AWS",
-            "AWS EC2"
+            "AWS Commands"
           ],
           "isPrivate": false,
           "owners": []
@@ -426,9 +426,9 @@
           "triggerLimit": null,
           "name": "Instance: Stop Instance",
           "aliasName": null,
-          "description": "Stops an instance you have specified using the instance ID on AWS EC2.",
+          "description": "Stops an instance you have specified using the instance ID on AWS Commands.",
           "collection": "/api/3/workflow_collections/a58b6104-95f8-4beb-9bdd-0d031dce22ee",
-          "tag": "#AWS EC2",
+          "tag": "#AWS Commands",
           "isActive": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
@@ -442,7 +442,7 @@
               "description": null,
               "arguments": {
                 "route": "0dfe9e9e-9157-4d35-8c44-c7ad5ab464b5",
-                "title": "AWS EC2: Stop Instance",
+                "title": "AWS Commands: Stop Instance",
                 "resources": [
                   "alerts"
                 ],
@@ -534,7 +534,7 @@
           "uuid": "30a42b0e-8561-4dfd-b8f9-f86f15b9d918",
           "recordTags": [
             "AWS",
-            "AWS EC2"
+            "AWS Commands"
           ],
           "isPrivate": false,
           "owners": []
@@ -544,9 +544,9 @@
           "triggerLimit": null,
           "name": "Security Group: Revoke Ingress",
           "aliasName": null,
-          "description": "Removes (revokes) egress rules from a security group on AWS EC2 based on the security group ID, and IP permissions you have specified.",
+          "description": "Removes (revokes) egress rules from a security group on AWS Commands based on the security group ID, and IP permissions you have specified.",
           "collection": "/api/3/workflow_collections/a58b6104-95f8-4beb-9bdd-0d031dce22ee",
-          "tag": "#AWS EC2",
+          "tag": "#AWS Commands",
           "isActive": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
@@ -559,7 +559,7 @@
               "name": "Revoke Ingress",
               "description": null,
               "arguments": {
-                "name": "AWS EC2",
+                "name": "AWS Commands",
                 "config": "2b4ed8be-f3b3-4be4-b241-02c3b7b2167b",
                 "params": {
                   "assume_role": "",
@@ -584,7 +584,7 @@
               "description": null,
               "arguments": {
                 "route": "c36c0700-8acc-4594-a517-8206cfbb897a",
-                "title": "AWS EC2: Revoke Ingress",
+                "title": "AWS Commands: Revoke Ingress",
                 "resources": [
                   "alerts"
                 ],
@@ -630,7 +630,7 @@
           "uuid": "35473596-f59a-4898-b809-92772d37aedd",
           "recordTags": [
             "AWS",
-            "AWS EC2"
+            "AWS Commands"
           ],
           "isPrivate": false,
           "owners": []
@@ -640,9 +640,9 @@
           "triggerLimit": null,
           "name": "Instance: Deregister Instance from ELB",
           "aliasName": null,
-          "description": "Deregisters an AWS EC2 instance to the elastic load balancing (ELB) service on AWS based on the ELB name and instance ID you have specified.",
+          "description": "Deregisters an AWS Commands instance to the elastic load balancing (ELB) service on AWS based on the ELB name and instance ID you have specified.",
           "collection": "/api/3/workflow_collections/a58b6104-95f8-4beb-9bdd-0d031dce22ee",
-          "tag": "#AWS EC2",
+          "tag": "#AWS Commands",
           "isActive": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
@@ -656,7 +656,7 @@
               "description": null,
               "arguments": {
                 "route": "19f8d084-ab05-461f-a9d6-f4aef635504a",
-                "title": "AWS EC2: Deregister Instance from ELB",
+                "title": "AWS Commands: Deregister Instance from ELB",
                 "resources": [
                   "alerts"
                 ],
@@ -729,7 +729,7 @@
           "uuid": "372a9aab-435c-45ce-9bff-cc8bfb75f2bb",
           "recordTags": [
             "AWS",
-            "AWS EC2"
+            "AWS Commands"
           ],
           "isPrivate": false,
           "owners": []
@@ -741,7 +741,7 @@
           "aliasName": null,
           "description": "Retrieves details for all AMIs (Amazon Machine Images) or specific AMIs, based on input parameters you have specified, from AWS.",
           "collection": "/api/3/workflow_collections/a58b6104-95f8-4beb-9bdd-0d031dce22ee",
-          "tag": "#AWS EC2",
+          "tag": "#AWS Commands",
           "isActive": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
@@ -795,7 +795,7 @@
               "description": null,
               "arguments": {
                 "route": "7ce3d294-117f-4496-b8ad-98bee64346db",
-                "title": "AWS EC2: Get AMIs Detail",
+                "title": "AWS Commands: Get AMIs Detail",
                 "resources": [
                   "alerts"
                 ],
@@ -841,7 +841,7 @@
           "uuid": "38c08bbd-6550-4ddf-8b2d-3e87fc681e26",
           "recordTags": [
             "AWS",
-            "AWS EC2"
+            "AWS Commands"
           ],
           "isPrivate": false,
           "owners": []
@@ -851,9 +851,9 @@
           "triggerLimit": null,
           "name": "Volume: Attach Volume",
           "aliasName": null,
-          "description": "Attaches a volume to an AWS EC2 instance based on the volume ID, Device Name, and instance ID you have specified.",
+          "description": "Attaches a volume to an AWS Commands instance based on the volume ID, Device Name, and instance ID you have specified.",
           "collection": "/api/3/workflow_collections/a58b6104-95f8-4beb-9bdd-0d031dce22ee",
-          "tag": "#AWS EC2",
+          "tag": "#AWS Commands",
           "isActive": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
@@ -913,7 +913,7 @@
               "description": null,
               "arguments": {
                 "route": "17035b16-cf19-4b04-b68b-5dc9f8375031",
-                "title": "AWS EC2: Attach Volume",
+                "title": "AWS Commands: Attach Volume",
                 "resources": [
                   "alerts"
                 ],
@@ -959,7 +959,7 @@
           "uuid": "3afb4338-0145-4664-9009-e28e4d2ff977",
           "recordTags": [
             "AWS",
-            "AWS EC2"
+            "AWS Commands"
           ],
           "isPrivate": false,
           "owners": []
@@ -969,9 +969,9 @@
           "triggerLimit": null,
           "name": "Instance: Add Instance Tag",
           "aliasName": null,
-          "description": "Adds a tag to an available AWS EC2 instance you have specified using the instance ID.Tags must be added in a key-value pair.",
+          "description": "Adds a tag to an available AWS Commands instance you have specified using the instance ID.Tags must be added in a key-value pair.",
           "collection": "/api/3/workflow_collections/a58b6104-95f8-4beb-9bdd-0d031dce22ee",
-          "tag": "#AWS EC2",
+          "tag": "#AWS Commands",
           "isActive": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
@@ -1013,7 +1013,7 @@
               "description": null,
               "arguments": {
                 "route": "3fb156c4-b9bb-464c-9c6a-d7a602b677eb",
-                "title": "AWS EC2: Add Instance Tag",
+                "title": "AWS Commands: Add Instance Tag",
                 "resources": [
                   "alerts"
                 ],
@@ -1059,7 +1059,7 @@
           "uuid": "4e53e19a-562f-41ca-b714-da6c0de8c0a1",
           "recordTags": [
             "AWS",
-            "AWS EC2"
+            "AWS Commands"
           ],
           "isPrivate": false,
           "owners": []
@@ -1071,7 +1071,7 @@
           "aliasName": null,
           "description": "Launches a new instance on AWS having basic configuration based on the image ID, instance type, and other input parameters you have specified.",
           "collection": "/api/3/workflow_collections/a58b6104-95f8-4beb-9bdd-0d031dce22ee",
-          "tag": "#AWS EC2",
+          "tag": "#AWS Commands",
           "isActive": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
@@ -1138,7 +1138,7 @@
               "description": null,
               "arguments": {
                 "route": "64750aeb-f6c2-4ff0-9d14-9315d3c96a0c",
-                "title": "AWS EC2: Launch Instance",
+                "title": "AWS Commands: Launch Instance",
                 "resources": [
                   "alerts"
                 ],
@@ -1184,7 +1184,7 @@
           "uuid": "4eb179b3-b8fb-4a70-a6af-d9302f4afa58",
           "recordTags": [
             "AWS",
-            "AWS EC2"
+            "AWS Commands"
           ],
           "isPrivate": false,
           "owners": []
@@ -1194,9 +1194,9 @@
           "triggerLimit": null,
           "name": "ACL: Delete Network ACL",
           "aliasName": null,
-          "description": "Deletes the specified network ACL. from AWS EC2, based on the Network ACL ID you have specified.",
+          "description": "Deletes the specified network ACL. from AWS Commands, based on the Network ACL ID you have specified.",
           "collection": "/api/3/workflow_collections/a58b6104-95f8-4beb-9bdd-0d031dce22ee",
-          "tag": "#AWS EC2",
+          "tag": "#AWS Commands",
           "isActive": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
@@ -1210,7 +1210,7 @@
               "description": null,
               "arguments": {
                 "route": "074cc3ab-b2f8-4361-a37e-89f852dea5b0",
-                "title": "AWS EC2: Delete Network ACL",
+                "title": "AWS Commands: Delete Network ACL",
                 "resources": [
                   "alerts"
                 ],
@@ -1234,7 +1234,7 @@
               "name": "Delete Network ACL",
               "description": null,
               "arguments": {
-                "name": "AWS EC2",
+                "name": "AWS Commands",
                 "config": "2b4ed8be-f3b3-4be4-b241-02c3b7b2167b",
                 "params": {
                   "assume_role": false,
@@ -1272,7 +1272,7 @@
           "uuid": "4f6197bb-7b44-49c7-bd2f-28a3209efb74",
           "recordTags": [
             "AWS",
-            "AWS EC2"
+            "AWS Commands"
           ],
           "isPrivate": false,
           "owners": []
@@ -1282,9 +1282,9 @@
           "triggerLimit": null,
           "name": "ACL: Delete Network ACL Rule",
           "aliasName": null,
-          "description": "Deletes the network ACL from AWS EC2,  based on the network ACL ID, Egress rule, and rule number you have specified.",
+          "description": "Deletes the network ACL from AWS Commands,  based on the network ACL ID, Egress rule, and rule number you have specified.",
           "collection": "/api/3/workflow_collections/a58b6104-95f8-4beb-9bdd-0d031dce22ee",
-          "tag": "#AWS EC2",
+          "tag": "#AWS Commands",
           "isActive": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
@@ -1298,7 +1298,7 @@
               "description": null,
               "arguments": {
                 "route": "7f007370-4ce7-4953-afc4-2d34e3afbb95",
-                "title": "AWS EC2: Delete Network ACL Rule",
+                "title": "AWS Commands: Delete Network ACL Rule",
                 "resources": [
                   "alerts"
                 ],
@@ -1322,7 +1322,7 @@
               "name": "Delete Network ACL Rule",
               "description": null,
               "arguments": {
-                "name": "AWS EC2",
+                "name": "AWS Commands",
                 "config": "2b4ed8be-f3b3-4be4-b241-02c3b7b2167b",
                 "params": {
                   "assume_role": false,
@@ -1362,7 +1362,7 @@
           "uuid": "56e63495-e3af-4de1-be5d-b3eb8a873ccf",
           "recordTags": [
             "AWS",
-            "AWS EC2"
+            "AWS Commands"
           ],
           "isPrivate": false,
           "owners": []
@@ -1372,9 +1372,9 @@
           "triggerLimit": null,
           "name": "Instance: Add Security Group to Instance",
           "aliasName": null,
-          "description": "Adds a security group to an AWS EC2 instance based on the security group name(s) or ID(s) and instance ID you have specified.",
+          "description": "Adds a security group to an AWS Commands instance based on the security group name(s) or ID(s) and instance ID you have specified.",
           "collection": "/api/3/workflow_collections/a58b6104-95f8-4beb-9bdd-0d031dce22ee",
-          "tag": "#AWS EC2",
+          "tag": "#AWS Commands",
           "isActive": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
@@ -1388,7 +1388,7 @@
               "description": null,
               "arguments": {
                 "route": "9ed1f40c-3a8f-496e-85e4-8020b47c5814",
-                "title": "AWS EC2: Add Security Group to Instance",
+                "title": "AWS Commands: Add Security Group to Instance",
                 "resources": [
                   "alerts"
                 ],
@@ -1461,7 +1461,7 @@
           "uuid": "76e4db6b-4f06-4992-aabf-4d6c3d50a0e1",
           "recordTags": [
             "AWS",
-            "AWS EC2"
+            "AWS Commands"
           ],
           "isPrivate": false,
           "owners": []
@@ -1471,9 +1471,9 @@
           "triggerLimit": null,
           "name": "Security Group: Get Details of Security Group",
           "aliasName": null,
-          "description": "Retrieves details of given security group from the AWS EC2 service.",
+          "description": "Retrieves details of given security group from the AWS Commands service.",
           "collection": "/api/3/workflow_collections/a58b6104-95f8-4beb-9bdd-0d031dce22ee",
-          "tag": "#AWS EC2",
+          "tag": "#AWS Commands",
           "isActive": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
@@ -1486,7 +1486,7 @@
               "name": "Get Details of Security Group",
               "description": null,
               "arguments": {
-                "name": "AWS EC2",
+                "name": "AWS Commands",
                 "config": "2b4ed8be-f3b3-4be4-b241-02c3b7b2167b",
                 "params": {
                   "assume_role": false,
@@ -1510,7 +1510,7 @@
               "description": null,
               "arguments": {
                 "route": "207feb4a-518c-4ccf-894f-1b013e7282d1",
-                "title": "AWS EC2: Get Details of Security Group",
+                "title": "AWS Commands: Get Details of Security Group",
                 "resources": [
                   "alerts"
                 ],
@@ -1556,7 +1556,7 @@
           "uuid": "777fab32-d2e8-4697-87f9-f109ac329dcc",
           "recordTags": [
             "AWS",
-            "AWS EC2"
+            "AWS Commands"
           ],
           "isPrivate": false,
           "owners": []
@@ -1566,9 +1566,9 @@
           "triggerLimit": null,
           "name": "ACL: Get Details of Network ACLs",
           "aliasName": null,
-          "description": "Retrieves details of one or more of your network ACLs from AWS EC2, based on the Network ACL IDs and filters you have specified.",
+          "description": "Retrieves details of one or more of your network ACLs from AWS Commands, based on the Network ACL IDs and filters you have specified.",
           "collection": "/api/3/workflow_collections/a58b6104-95f8-4beb-9bdd-0d031dce22ee",
-          "tag": "#AWS EC2",
+          "tag": "#AWS Commands",
           "isActive": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
@@ -1582,7 +1582,7 @@
               "description": null,
               "arguments": {
                 "route": "9f665655-f0b6-452c-a1c3-97a900258d05",
-                "title": "AWS EC2: Get Details of Network ACLs",
+                "title": "AWS Commands: Get Details of Network ACLs",
                 "resources": [
                   "alerts"
                 ],
@@ -1606,7 +1606,7 @@
               "name": "Get Details of Network ACLs",
               "description": null,
               "arguments": {
-                "name": "AWS EC2",
+                "name": "AWS Commands",
                 "config": "2b4ed8be-f3b3-4be4-b241-02c3b7b2167b",
                 "params": {
                   "filters": "",
@@ -1645,7 +1645,7 @@
           "uuid": "80e1b6c0-476c-415d-b738-4cc1f6353967",
           "recordTags": [
             "AWS",
-            "AWS EC2"
+            "AWS Commands"
           ],
           "isPrivate": false,
           "owners": []
@@ -1657,7 +1657,7 @@
           "aliasName": null,
           "description": "Deletes a security group you have specified, using the security group ID.",
           "collection": "/api/3/workflow_collections/a58b6104-95f8-4beb-9bdd-0d031dce22ee",
-          "tag": "#AWS EC2",
+          "tag": "#AWS Commands",
           "isActive": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
@@ -1671,7 +1671,7 @@
               "description": null,
               "arguments": {
                 "route": "20361c4b-a182-4dfb-bdde-448e7bf061b0",
-                "title": "AWS EC2: Delete Security Groups",
+                "title": "AWS Commands: Delete Security Groups",
                 "resources": [
                   "alerts"
                 ],
@@ -1704,7 +1704,7 @@
               "name": "Delete Security Groups",
               "description": null,
               "arguments": {
-                "name": "AWS EC2",
+                "name": "AWS Commands",
                 "config": "2b4ed8be-f3b3-4be4-b241-02c3b7b2167b",
                 "params": {
                   "assume_role": "",
@@ -1740,7 +1740,7 @@
           "uuid": "8693ce00-ec9b-44b8-afdf-14bee2a392d4",
           "recordTags": [
             "AWS",
-            "AWS EC2"
+            "AWS Commands"
           ],
           "isPrivate": false,
           "owners": []
@@ -1750,9 +1750,9 @@
           "triggerLimit": null,
           "name": "Instance: Register Instance To ELB",
           "aliasName": null,
-          "description": "Registers an AWS EC2 instance to the elastic load balancing (ELB) service on AWS based on the ELB name and instance ID you have specified",
+          "description": "Registers an AWS Commands instance to the elastic load balancing (ELB) service on AWS based on the ELB name and instance ID you have specified",
           "collection": "/api/3/workflow_collections/a58b6104-95f8-4beb-9bdd-0d031dce22ee",
-          "tag": "#AWS EC2",
+          "tag": "#AWS Commands",
           "isActive": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
@@ -1766,7 +1766,7 @@
               "description": null,
               "arguments": {
                 "route": "5df63d15-04bf-4880-83fa-70b483c18df6",
-                "title": "AWS EC2: Register Instance To ELB",
+                "title": "AWS Commands: Register Instance To ELB",
                 "resources": [
                   "alerts"
                 ],
@@ -1799,7 +1799,7 @@
               "name": "Register Instance To ELB",
               "description": null,
               "arguments": {
-                "name": "AWS EC2",
+                "name": "AWS Commands",
                 "config": "2b4ed8be-f3b3-4be4-b241-02c3b7b2167b",
                 "params": {
                   "elb_name": "demo",
@@ -1836,7 +1836,7 @@
           "uuid": "8a9c64ca-8644-467b-8fb9-6e792b839797",
           "recordTags": [
             "AWS",
-            "AWS EC2"
+            "AWS Commands"
           ],
           "isPrivate": false,
           "owners": []
@@ -1848,7 +1848,7 @@
           "aliasName": null,
           "description": "Retrieves details for a user you have specified, using the username from AWS.",
           "collection": "/api/3/workflow_collections/a58b6104-95f8-4beb-9bdd-0d031dce22ee",
-          "tag": "#AWS EC2",
+          "tag": "#AWS Commands",
           "isActive": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
@@ -1888,7 +1888,7 @@
               "description": null,
               "arguments": {
                 "route": "5796a7b2-c79f-45b2-81d7-64812b906226",
-                "title": "AWS EC2: Get User Details",
+                "title": "AWS Commands: Get User Details",
                 "resources": [
                   "alerts"
                 ],
@@ -1934,7 +1934,7 @@
           "uuid": "8ee9bd0c-e3f7-4afd-b67d-bb6a98bf945b",
           "recordTags": [
             "AWS",
-            "AWS EC2"
+            "AWS Commands"
           ],
           "isPrivate": false,
           "owners": []
@@ -1944,9 +1944,9 @@
           "triggerLimit": null,
           "name": "Instance: Start Instance",
           "aliasName": null,
-          "description": "Starts an instance you have specified using the instance ID on AWS EC2.",
+          "description": "Starts an instance you have specified using the instance ID on AWS Commands.",
           "collection": "/api/3/workflow_collections/a58b6104-95f8-4beb-9bdd-0d031dce22ee",
-          "tag": "#AWS EC2",
+          "tag": "#AWS Commands",
           "isActive": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
@@ -1960,7 +1960,7 @@
               "description": null,
               "arguments": {
                 "route": "ee9f0f20-3e12-43b5-adda-c0a3d320d87c",
-                "title": "AWS EC2: Start Instance",
+                "title": "AWS Commands: Start Instance",
                 "resources": [
                   "alerts"
                 ],
@@ -2053,7 +2053,7 @@
           "uuid": "90abe4a7-adb0-44b4-bb2f-a7ade6fae46a",
           "recordTags": [
             "AWS",
-            "AWS EC2"
+            "AWS Commands"
           ],
           "isPrivate": false,
           "owners": []
@@ -2063,9 +2063,9 @@
           "triggerLimit": null,
           "name": "Security Group: Get Security Groups",
           "aliasName": null,
-          "description": "Retrieves details of all security groups from the AWS EC2 service.",
+          "description": "Retrieves details of all security groups from the AWS Commands service.",
           "collection": "/api/3/workflow_collections/a58b6104-95f8-4beb-9bdd-0d031dce22ee",
-          "tag": "#AWS EC2",
+          "tag": "#AWS Commands",
           "isActive": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
@@ -2079,7 +2079,7 @@
               "description": null,
               "arguments": {
                 "route": "d52b1a28-2cd7-477c-b869-6988a4e4c0a6",
-                "title": "AWS EC2: Get Security Groups",
+                "title": "AWS Commands: Get Security Groups",
                 "resources": [
                   "alerts"
                 ],
@@ -2112,7 +2112,7 @@
               "name": "Get Security Groups",
               "description": null,
               "arguments": {
-                "name": "AWS EC2",
+                "name": "AWS Commands",
                 "config": "",
                 "params": [],
                 "version": "3.1.0",
@@ -2147,7 +2147,7 @@
           "uuid": "931973aa-fcda-4126-a150-0aff03b7bc96",
           "recordTags": [
             "AWS",
-            "AWS EC2"
+            "AWS Commands"
           ],
           "isPrivate": false,
           "owners": []
@@ -2157,9 +2157,9 @@
           "triggerLimit": null,
           "name": "Security Group: Authorize Egress",
           "aliasName": null,
-          "description": "Adds (authorizes) egress rules to a security group on AWS EC2 based on the security group ID, and IP permissions you have specified",
+          "description": "Adds (authorizes) egress rules to a security group on AWS Commands based on the security group ID, and IP permissions you have specified",
           "collection": "/api/3/workflow_collections/a58b6104-95f8-4beb-9bdd-0d031dce22ee",
-          "tag": "#AWS EC2",
+          "tag": "#AWS Commands",
           "isActive": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
@@ -2173,7 +2173,7 @@
               "description": null,
               "arguments": {
                 "route": "e284f3b1-6546-4287-8008-3936ab61ba64",
-                "title": "AWS EC2: Authorize Egress",
+                "title": "AWS Commands: Authorize Egress",
                 "resources": [
                   "alerts"
                 ],
@@ -2206,7 +2206,7 @@
               "name": "Authorize Egress",
               "description": null,
               "arguments": {
-                "name": "AWS EC2",
+                "name": "AWS Commands",
                 "config": "2b4ed8be-f3b3-4be4-b241-02c3b7b2167b",
                 "params": {
                   "assume_role": "",
@@ -2245,7 +2245,7 @@
           "uuid": "a2ace88f-64e0-4008-bb3a-eefae8a7d36c",
           "recordTags": [
             "AWS",
-            "AWS EC2"
+            "AWS Commands"
           ],
           "isPrivate": false,
           "owners": []
@@ -2255,9 +2255,9 @@
           "triggerLimit": null,
           "name": "ACL: Add Network ACL Rule",
           "aliasName": null,
-          "description": "Adds a rule to the network access control list (ACL) on AWS EC2 based on the Network ACL ID, egress rule, and other input parameters you have specified.",
+          "description": "Adds a rule to the network access control list (ACL) on AWS Commands based on the Network ACL ID, egress rule, and other input parameters you have specified.",
           "collection": "/api/3/workflow_collections/a58b6104-95f8-4beb-9bdd-0d031dce22ee",
-          "tag": "#AWS EC2",
+          "tag": "#AWS Commands",
           "isActive": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
@@ -2271,7 +2271,7 @@
               "description": null,
               "arguments": {
                 "route": "e5ba2faf-a9e2-4a5b-a4c0-3717713d76da",
-                "title": "AWS EC2: Add Network ACL Rule",
+                "title": "AWS Commands: Add Network ACL Rule",
                 "resources": [
                   "alerts"
                 ],
@@ -2304,7 +2304,7 @@
               "name": "Add Network ACL Rule",
               "description": null,
               "arguments": {
-                "name": "AWS EC2",
+                "name": "AWS Commands",
                 "config": "2b4ed8be-f3b3-4be4-b241-02c3b7b2167b",
                 "params": {
                   "ip_address": "1.2.3.4",
@@ -2346,7 +2346,7 @@
           "uuid": "ac76b4e3-f3f3-4fde-82e2-9f1c60658d72",
           "recordTags": [
             "AWS",
-            "AWS EC2"
+            "AWS Commands"
           ],
           "isPrivate": false,
           "owners": []
@@ -2356,9 +2356,9 @@
           "triggerLimit": null,
           "name": "Security Group: Revoke Egress",
           "aliasName": null,
-          "description": "Removes (revokes) egress rules from a security group on AWS EC2 based on the security group ID, and IP permissions you have specified.",
+          "description": "Removes (revokes) egress rules from a security group on AWS Commands based on the security group ID, and IP permissions you have specified.",
           "collection": "/api/3/workflow_collections/a58b6104-95f8-4beb-9bdd-0d031dce22ee",
-          "tag": "#AWS EC2",
+          "tag": "#AWS Commands",
           "isActive": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
@@ -2371,7 +2371,7 @@
               "name": "Revoke Egress",
               "description": null,
               "arguments": {
-                "name": "AWS EC2",
+                "name": "AWS Commands",
                 "config": "2b4ed8be-f3b3-4be4-b241-02c3b7b2167b",
                 "params": {
                   "assume_role": "",
@@ -2398,7 +2398,7 @@
               "description": null,
               "arguments": {
                 "route": "fb6a9ac5-d5cb-4cee-bbea-ef366fe863e0",
-                "title": "AWS EC2: Revoke Egress",
+                "title": "AWS Commands: Revoke Egress",
                 "resources": [
                   "alerts"
                 ],
@@ -2444,7 +2444,7 @@
           "uuid": "b01f4fa9-2c0e-479b-92bf-682e6e5f5d23",
           "recordTags": [
             "AWS",
-            "AWS EC2"
+            "AWS Commands"
           ],
           "isPrivate": false,
           "owners": []
@@ -2456,7 +2456,7 @@
           "aliasName": null,
           "description": "Deletes a volume you have specified, using the volume ID.",
           "collection": "/api/3/workflow_collections/a58b6104-95f8-4beb-9bdd-0d031dce22ee",
-          "tag": "#AWS EC2",
+          "tag": "#AWS Commands",
           "isActive": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
@@ -2503,7 +2503,7 @@
               "description": null,
               "arguments": {
                 "route": "368e5f2f-6b61-4e89-afe1-4651b9b2f185",
-                "title": "AWS EC2: Delete Volume",
+                "title": "AWS Commands: Delete Volume",
                 "resources": [
                   "alerts"
                 ],
@@ -2549,7 +2549,7 @@
           "uuid": "b1af11b6-872c-4ec0-95c0-967d4872df99",
           "recordTags": [
             "AWS",
-            "AWS EC2"
+            "AWS Commands"
           ],
           "isPrivate": false,
           "owners": []
@@ -2559,9 +2559,9 @@
           "triggerLimit": null,
           "name": "Instance: Instance API Termination",
           "aliasName": null,
-          "description": "Terminates an instance on AWS EC2 using the REST API, if you have enabled this operation based on the instance ID and action you have specified.",
+          "description": "Terminates an instance on AWS Commands using the REST API, if you have enabled this operation based on the instance ID and action you have specified.",
           "collection": "/api/3/workflow_collections/a58b6104-95f8-4beb-9bdd-0d031dce22ee",
-          "tag": "#AWS EC2",
+          "tag": "#AWS Commands",
           "isActive": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
@@ -2609,7 +2609,7 @@
               "description": null,
               "arguments": {
                 "route": "21fb72f3-e7d3-4eca-99d0-4174901c21f6",
-                "title": "AWS EC2: Instance API Termination",
+                "title": "AWS Commands: Instance API Termination",
                 "resources": [
                   "alerts"
                 ],
@@ -2655,7 +2655,7 @@
           "uuid": "b37fd9a5-e87b-4a02-8e9a-faa0ee3a74d5",
           "recordTags": [
             "AWS",
-            "AWS EC2"
+            "AWS Commands"
           ],
           "isPrivate": false,
           "owners": []
@@ -2665,9 +2665,9 @@
           "triggerLimit": null,
           "name": "Instance: Terminate Instance",
           "aliasName": null,
-          "description": "Terminates an AWS EC2 instance you have specified using the instance ID.",
+          "description": "Terminates an AWS Commands instance you have specified using the instance ID.",
           "collection": "/api/3/workflow_collections/a58b6104-95f8-4beb-9bdd-0d031dce22ee",
-          "tag": "#AWS EC2",
+          "tag": "#AWS Commands",
           "isActive": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
@@ -2727,7 +2727,7 @@
               "description": null,
               "arguments": {
                 "route": "9989951b-53db-46b4-8399-a24ede280395",
-                "title": "AWS EC2: Terminate Instance",
+                "title": "AWS Commands: Terminate Instance",
                 "resources": [
                   "alerts"
                 ],
@@ -2773,7 +2773,7 @@
           "uuid": "b6922307-7b78-4d3d-8bd3-cb9c539ba508",
           "recordTags": [
             "AWS",
-            "AWS EC2"
+            "AWS Commands"
           ],
           "isPrivate": false,
           "owners": []
@@ -2783,9 +2783,9 @@
           "triggerLimit": null,
           "name": "Security Group: Authorize Ingress",
           "aliasName": null,
-          "description": "Adds (authorizes) ingress rules to a security group on AWS EC2 based on the security group ID, CIDR IP value, and other input parameters you have specified.",
+          "description": "Adds (authorizes) ingress rules to a security group on AWS Commands based on the security group ID, CIDR IP value, and other input parameters you have specified.",
           "collection": "/api/3/workflow_collections/a58b6104-95f8-4beb-9bdd-0d031dce22ee",
-          "tag": "#AWS EC2",
+          "tag": "#AWS Commands",
           "isActive": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
@@ -2799,7 +2799,7 @@
               "description": null,
               "arguments": {
                 "route": "52351f94-873b-4655-99da-e68d38015444",
-                "title": "AWS EC2: Authorize Ingress",
+                "title": "AWS Commands: Authorize Ingress",
                 "resources": [
                   "alerts"
                 ],
@@ -2832,7 +2832,7 @@
               "name": "Authorize Ingress",
               "description": null,
               "arguments": {
-                "name": "AWS EC2",
+                "name": "AWS Commands",
                 "config": "2b4ed8be-f3b3-4be4-b241-02c3b7b2167b",
                 "params": {
                   "assume_role": "",
@@ -2869,7 +2869,7 @@
           "uuid": "b70e72f5-1e36-412e-ab65-c3bf03f3c37a",
           "recordTags": [
             "AWS",
-            "AWS EC2"
+            "AWS Commands"
           ],
           "isPrivate": false,
           "owners": []
@@ -2879,9 +2879,9 @@
           "triggerLimit": null,
           "name": "Instance: Get Instance Details",
           "aliasName": null,
-          "description": "Retrieves details for an instance you have specified, using the instance ID from AWS EC2.",
+          "description": "Retrieves details for an instance you have specified, using the instance ID from AWS Commands.",
           "collection": "/api/3/workflow_collections/a58b6104-95f8-4beb-9bdd-0d031dce22ee",
-          "tag": "#AWS EC2",
+          "tag": "#AWS Commands",
           "isActive": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
@@ -2921,7 +2921,7 @@
               "description": null,
               "arguments": {
                 "route": "05c74efd-7e1a-4a13-b008-81d64a2f8860",
-                "title": "AWS EC2: Get Instance Details",
+                "title": "AWS Commands: Get Instance Details",
                 "resources": [
                   "alerts"
                 ],
@@ -2967,7 +2967,7 @@
           "uuid": "c50bf3b4-3169-4248-b1a9-eb4c0195f596",
           "recordTags": [
             "AWS",
-            "AWS EC2"
+            "AWS Commands"
           ],
           "isPrivate": false,
           "owners": []
@@ -2977,9 +2977,9 @@
           "triggerLimit": null,
           "name": "Volume: Capture Volume Snapshot",
           "aliasName": null,
-          "description": "Captures a snapshot of a volume on AWS EC2 based on the volume ID and volume description you have specified.",
+          "description": "Captures a snapshot of a volume on AWS Commands based on the volume ID and volume description you have specified.",
           "collection": "/api/3/workflow_collections/a58b6104-95f8-4beb-9bdd-0d031dce22ee",
-          "tag": "#AWS EC2",
+          "tag": "#AWS Commands",
           "isActive": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
@@ -3020,7 +3020,7 @@
               "description": null,
               "arguments": {
                 "route": "c4c7cabd-8209-4278-9d92-59ea620de523",
-                "title": "AWS EC2: Capture Volume Snapshot",
+                "title": "AWS Commands: Capture Volume Snapshot",
                 "resources": [
                   "alerts"
                 ],
@@ -3066,7 +3066,7 @@
           "uuid": "d8bf7cd4-5ed2-42f0-8e25-6ee3c36713f2",
           "recordTags": [
             "AWS",
-            "AWS EC2"
+            "AWS Commands"
           ],
           "isPrivate": false,
           "owners": []
@@ -3076,9 +3076,9 @@
           "triggerLimit": null,
           "name": "Security Group: Create Security Groups",
           "aliasName": null,
-          "description": "Creates a new security group in the AWS EC2 service based on the group name and description you have specified.",
+          "description": "Creates a new security group in the AWS Commands service based on the group name and description you have specified.",
           "collection": "/api/3/workflow_collections/a58b6104-95f8-4beb-9bdd-0d031dce22ee",
-          "tag": "#AWS EC2",
+          "tag": "#AWS Commands",
           "isActive": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
@@ -3092,7 +3092,7 @@
               "description": null,
               "arguments": {
                 "route": "3796dec7-5e27-4f68-9bca-12a19f760186",
-                "title": "AWS EC2: Create Security Groups",
+                "title": "AWS Commands: Create Security Groups",
                 "resources": [
                   "alerts"
                 ],
@@ -3125,7 +3125,7 @@
               "name": "Create Security Groups",
               "description": null,
               "arguments": {
-                "name": "AWS EC2",
+                "name": "AWS Commands",
                 "config": "2b4ed8be-f3b3-4be4-b241-02c3b7b2167b",
                 "params": {
                   "group_name": "Test-Group",
@@ -3164,7 +3164,7 @@
           "uuid": "e111f89d-a9af-4c7d-9613-5aabb8120d03",
           "recordTags": [
             "AWS",
-            "AWS EC2"
+            "AWS Commands"
           ],
           "isPrivate": false,
           "owners": []
@@ -3174,9 +3174,9 @@
           "triggerLimit": null,
           "name": "ACL: Create Network ACL",
           "aliasName": null,
-          "description": "Creates a network ACL in AWS EC2 in the VPC you have specified.",
+          "description": "Creates a network ACL in AWS Commands in the VPC you have specified.",
           "collection": "/api/3/workflow_collections/a58b6104-95f8-4beb-9bdd-0d031dce22ee",
-          "tag": "#AWS EC2",
+          "tag": "#AWS Commands",
           "isActive": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
@@ -3190,7 +3190,7 @@
               "description": null,
               "arguments": {
                 "route": "e824e99b-7a50-4aea-9751-c2ba80318c90",
-                "title": "AWS EC2: Create Network ACL",
+                "title": "AWS Commands: Create Network ACL",
                 "resources": [
                   "alerts"
                 ],
@@ -3214,7 +3214,7 @@
               "name": "Create Network ACL",
               "description": null,
               "arguments": {
-                "name": "AWS EC2",
+                "name": "AWS Commands",
                 "config": "2b4ed8be-f3b3-4be4-b241-02c3b7b2167b",
                 "params": {
                   "vpc_id": "vpc-f29a2899",
@@ -3252,7 +3252,7 @@
           "uuid": "eebb2d83-978b-4240-a6ce-e7f046b5eb13",
           "recordTags": [
             "AWS",
-            "AWS EC2"
+            "AWS Commands"
           ],
           "isPrivate": false,
           "owners": []
@@ -3262,6 +3262,6 @@
   ],
   "exported_tags": [
     "AWS",
-    "AWS EC2"
+    "AWS Commands"
   ]
 }

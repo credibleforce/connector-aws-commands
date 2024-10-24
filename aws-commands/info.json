@@ -232,9 +232,9 @@
           "required": false,
           "editable": true,
           "visible": true,
-          "tooltip": "List of IDs of the AMIs whose details you want to retrieve from AWS EC2.",
+          "tooltip": "List of IDs of the AMIs whose details you want to retrieve from AWS Commands.",
           "placeholder": "e.g [\"ami-ca2e09af\"]",
-          "description": "List of IDs of the AMIs whose details you want to retrieve from AWS EC2."
+          "description": "List of IDs of the AMIs whose details you want to retrieve from AWS Commands."
         },
         {
           "title": "Executable Users",
@@ -243,9 +243,9 @@
           "required": false,
           "editable": true,
           "visible": true,
-          "tooltip": "List of AWS Account IDs of executable users(s) associated with the AMI(s) whose details you want to retrieve from AWS EC2.",
+          "tooltip": "List of AWS Account IDs of executable users(s) associated with the AMI(s) whose details you want to retrieve from AWS Commands.",
           "placeholder": "e.g [\"User_name\"]",
-          "description": "List of AWS Account IDs of executable users(s) associated with the AMI(s) whose details you want to retrieve from AWS EC2."
+          "description": "List of AWS Account IDs of executable users(s) associated with the AMI(s) whose details you want to retrieve from AWS Commands."
         },
         {
           "title": "Owners",
@@ -254,9 +254,9 @@
           "required": false,
           "editable": true,
           "visible": true,
-          "tooltip": "List of AWS Account IDs of owners associated with the AMI(s) whose details you want to retrieve from AWS EC2..",
+          "tooltip": "List of AWS Account IDs of owners associated with the AMI(s) whose details you want to retrieve from AWS Commands..",
           "placeholder": "e.g [\"Owner_name\"]",
-          "description": "List of AWS Account IDs of owners associated with the AMI(s) whose details you want to retrieve from AWS EC2.."
+          "description": "List of AWS Account IDs of owners associated with the AMI(s) whose details you want to retrieve from AWS Commands.."
         },
         {
           "title": "Filters",
@@ -265,9 +265,9 @@
           "required": false,
           "editable": true,
           "visible": true,
-          "tooltip": "List of filters(Name and Values Pairs) based on which you want to retrieve details of AMIs from AWS EC2.",
+          "tooltip": "List of filters(Name and Values Pairs) based on which you want to retrieve details of AMIs from AWS Commands.",
           "placeholder": "e.g [{\"Name\": \"string\", \"Values\": [ \"string\",]}]",
-          "description": "List of filters based on which you want to retrieve details of AMIs from AWS EC2."
+          "description": "List of filters based on which you want to retrieve details of AMIs from AWS Commands."
         }
       ],
       "enabled": true,
@@ -495,8 +495,8 @@
             "h1.16xlarge"
           ],
           "value": "t1.micro",
-          "tooltip": "Type of the instance that you want to launch on AWS EC2. For example, t1.micro",
-          "description": "Type of the instance that you want to launch on AWS EC2. For example, t1.micro"
+          "tooltip": "Type of the instance that you want to launch on AWS Commands. For example, t1.micro",
+          "description": "Type of the instance that you want to launch on AWS Commands. For example, t1.micro"
         },
         {
           "title": "Instance MaxCount",
@@ -507,7 +507,7 @@
           "visible": true,
           "value": 1,
           "tooltip": "If you specify a maximum that is greater than the maximum number of instances Amazon EC2 can launch in the target Availability Zone, Amazon EC2 launches the largest possible number of instances above MinCount.",
-          "description": "Maximum number of instances to launch on AWS EC2. If you specify a maximum that is greater than the maximum number of instances Amazon EC2 can launch in the target Availability Zone, Amazon EC2 launches the largest possible number of instances above MinCount."
+          "description": "Maximum number of instances to launch on AWS Commands. If you specify a maximum that is greater than the maximum number of instances Amazon EC2 can launch in the target Availability Zone, Amazon EC2 launches the largest possible number of instances above MinCount."
         },
         {
           "title": "Instance MinCount",
@@ -518,7 +518,7 @@
           "visible": true,
           "value": 1,
           "tooltip": "If you specify a minimum that is lesser than the minimum number of instances than Amazon EC2 can launch in the target Availability Zone, Amazon EC2 launches no instances.",
-          "description": "Minimum number of instances to launch on AWS EC2. If you specify a minimum that is lesser than the minimum number of instances than Amazon EC2 can launch in the target Availability Zone, Amazon EC2 launches no instances."
+          "description": "Minimum number of instances to launch on AWS Commands. If you specify a minimum that is lesser than the minimum number of instances than Amazon EC2 can launch in the target Availability Zone, Amazon EC2 launches no instances."
         },
         {
           "title": "SubNet ID",
@@ -562,7 +562,7 @@
           "visible": true,
           "tooltip": "One or more security group IDs. Default: Amazon EC2 uses the default security group. You can give multiple group ids like \"sg-3578605d\", \"sg-f1445c99\" or [\u0027sg-3578605d\u0027, \u0027sg-f1445c99\u0027]",
           "placeholder": "e.g. [\u0027sg-3578605d\u0027, \u0027sg-f1445c99\u0027]",
-          "description": "SD(s) of the security group(s) to be assigned to the newly launched instance on AWS EC2."
+          "description": "SD(s) of the security group(s) to be assigned to the newly launched instance on AWS Commands."
         },
         {
           "title": "Purpose For Launch Instance",
@@ -571,8 +571,8 @@
           "required": false,
           "editable": true,
           "visible": true,
-          "tooltip": "Purpose of launching the instance on AWS EC2.",
-          "description": "Purpose of launching the instance on AWS EC2."
+          "tooltip": "Purpose of launching the instance on AWS Commands.",
+          "description": "Purpose of launching the instance on AWS Commands."
         },
         {
           "title": "Customer Name",
@@ -581,8 +581,8 @@
           "required": false,
           "editable": true,
           "visible": true,
-          "tooltip": "Name of the customer for whom you are requesting the launch of the new instance on AWS EC2.",
-          "description": "Name of the customer for whom you are requesting the launch of the new instance on AWS EC2."
+          "tooltip": "Name of the customer for whom you are requesting the launch of the new instance on AWS Commands.",
+          "description": "Name of the customer for whom you are requesting the launch of the new instance on AWS Commands."
         },
         {
           "title": "Terminate by Date",
@@ -591,8 +591,8 @@
           "required": false,
           "editable": true,
           "visible": true,
-          "tooltip": "Date on which the instance will be terminated on AWS EC2.",
-          "description": "Date on which the instance will be terminated on AWS EC2."
+          "tooltip": "Date on which the instance will be terminated on AWS Commands.",
+          "description": "Date on which the instance will be terminated on AWS Commands."
         }
       ],
       "enabled": true,
@@ -620,7 +620,7 @@
       "title": "Get Instance Details",
       "category": "investigation",
       "annotation": "get_instance_info",
-      "description": "Retrieves details for an instance you have specified, using the instance ID from AWS EC2.",
+      "description": "Retrieves details for an instance you have specified, using the instance ID from AWS Commands.",
       "parameters": [
         {
           "title": "Assume a Role",
@@ -686,8 +686,8 @@
           "type": "text",
           "name": "instance_id",
           "placeholder": "e.g. i-0055c209fce039354",
-          "tooltip": "ID of the instance for which you want to retrieve details from AWS EC2.",
-          "description": "ID of the instance for which you want to retrieve details from AWS EC2."
+          "tooltip": "ID of the instance for which you want to retrieve details from AWS Commands.",
+          "description": "ID of the instance for which you want to retrieve details from AWS Commands."
         }
       ],
       "enabled": true,
@@ -760,7 +760,7 @@
       "title": "Start Instance",
       "category": "miscellaneous",
       "annotation": "start_instance",
-      "description": "Starts an instance you have specified using the instance ID on AWS EC2.",
+      "description": "Starts an instance you have specified using the instance ID on AWS Commands.",
       "parameters": [
         {
           "title": "Assume a Role",
@@ -826,8 +826,8 @@
           "type": "text",
           "name": "instance_id",
           "placeholder": "e.g. i-0055c209fce039354",
-          "tooltip": "ID of the instance that you want to start on AWS EC2.",
-          "description": "ID of the instance that you want to start on AWS EC2."
+          "tooltip": "ID of the instance that you want to start on AWS Commands.",
+          "description": "ID of the instance that you want to start on AWS Commands."
         },
         {
           "title": "Purpose",
@@ -836,8 +836,8 @@
           "visible": true,
           "type": "text",
           "name": "description",
-          "tooltip": "Purpose of starting the instance on AWS EC2.",
-          "description": "Purpose of starting the instance on AWS EC2."
+          "tooltip": "Purpose of starting the instance on AWS Commands.",
+          "description": "Purpose of starting the instance on AWS Commands."
         }
       ],
       "enabled": true,
@@ -874,7 +874,7 @@
       "title": "Stop Instance",
       "category": "miscellaneous",
       "annotation": "stop_instance",
-      "description": "Stops an instance you have specified using the instance ID on AWS EC2.",
+      "description": "Stops an instance you have specified using the instance ID on AWS Commands.",
       "parameters": [
         {
           "title": "Assume a Role",
@@ -940,8 +940,8 @@
           "type": "text",
           "name": "instance_id",
           "placeholder": "e.g. i-0055c209fce039354",
-          "tooltip": "ID of the instance that you want to stop on AWS EC2.",
-          "description": "ID of the instance that you want to stop on AWS EC2."
+          "tooltip": "ID of the instance that you want to stop on AWS Commands.",
+          "description": "ID of the instance that you want to stop on AWS Commands."
         }
       ],
       "enabled": true,
@@ -972,7 +972,7 @@
       "title": "Reboot Instance",
       "category": "miscellaneous",
       "annotation": "reboot_instance",
-      "description": "Reboots an instance you have specified using the instance ID on AWS EC2.",
+      "description": "Reboots an instance you have specified using the instance ID on AWS Commands.",
       "parameters": [
         {
           "title": "Assume a Role",
@@ -1038,8 +1038,8 @@
           "type": "text",
           "name": "instance_id",
           "placeholder": "e.g. i-0055c209fce039354",
-          "tooltip": "ID of the instance that you want to reboot on AWS EC2",
-          "description": "ID of the instance that you want to reboot on AWS EC2"
+          "tooltip": "ID of the instance that you want to reboot on AWS Commands",
+          "description": "ID of the instance that you want to reboot on AWS Commands"
         }
       ],
       "enabled": true,
@@ -1063,7 +1063,7 @@
       "title": "Add Instance Tag",
       "category": "miscellaneous",
       "annotation": "add_tag",
-      "description": "Adds a tag to an available AWS EC2 instance you have specified using the instance ID.",
+      "description": "Adds a tag to an available AWS Commands instance you have specified using the instance ID.",
       "parameters": [
         {
           "title": "Assume a Role",
@@ -1129,8 +1129,8 @@
           "type": "text",
           "name": "instance_id",
           "placeholder": "e.g. i-0055c209fce039354",
-          "tooltip": "ID of the AWS EC2 instance to which you want to add a tag.",
-          "description": "ID of the AWS EC2 instance to which you want to add a tag."
+          "tooltip": "ID of the AWS Commands instance to which you want to add a tag.",
+          "description": "ID of the AWS Commands instance to which you want to add a tag."
         },
         {
           "title": "Tag Key",
@@ -1168,7 +1168,7 @@
       "title": "Register Instance To ELB",
       "category": "miscellaneous",
       "annotation": "register_instance",
-      "description": "Registers an AWS EC2 instance to the elastic load balancing (ELB) service on AWS based on the ELB name and instance ID you have specified",
+      "description": "Registers an AWS Commands instance to the elastic load balancing (ELB) service on AWS based on the ELB name and instance ID you have specified",
       "parameters": [
         {
           "title": "Assume a Role",
@@ -1233,8 +1233,8 @@
           "visible": true,
           "type": "text",
           "name": "elb_name",
-          "tooltip": "Name of the ELB to which you want to register the specified instance on AWS EC2.",
-          "description": "Name of the ELB to which you want to register the specified instance on AWS EC2."
+          "tooltip": "Name of the ELB to which you want to register the specified instance on AWS Commands.",
+          "description": "Name of the ELB to which you want to register the specified instance on AWS Commands."
         },
         {
           "title": "Instance ID",
@@ -1244,8 +1244,8 @@
           "type": "text",
           "name": "instance_id",
           "placeholder": "e.g. i-0055c209fce039354",
-          "tooltip": "ID of the instance that you want to register with the specified ELB on AWS EC2.",
-          "description": "ID of the instance that you want to register with the specified ELB on AWS EC2."
+          "tooltip": "ID of the instance that you want to register with the specified ELB on AWS Commands.",
+          "description": "ID of the instance that you want to register with the specified ELB on AWS Commands."
         }
       ],
       "enabled": true,
@@ -1341,8 +1341,8 @@
           "visible": true,
           "type": "text",
           "name": "elb_name",
-          "tooltip": "Name of the ELB from which you want to deregister the specified instance on AWS EC2.",
-          "description": "Name of the ELB from which you want to deregister the specified instance on AWS EC2."
+          "tooltip": "Name of the ELB from which you want to deregister the specified instance on AWS Commands.",
+          "description": "Name of the ELB from which you want to deregister the specified instance on AWS Commands."
         },
         {
           "title": "Instance ID",
@@ -1352,8 +1352,8 @@
           "type": "text",
           "name": "instance_id",
           "placeholder": "e.g. i-0055c209fce039354",
-          "tooltip": "ID of the instance that you want to deregister from the specified ELB on AWS EC2.",
-          "description": "ID of the instance that you want to deregister from the specified ELB on AWS EC2."
+          "tooltip": "ID of the instance that you want to deregister from the specified ELB on AWS Commands.",
+          "description": "ID of the instance that you want to deregister from the specified ELB on AWS Commands."
         }
       ],
       "enabled": true,
@@ -1377,7 +1377,7 @@
       "title": "Attach Instance To Auto Scaling Group",
       "category": "miscellaneous",
       "annotation": "attach_instance",
-      "description": "Attaches a running instance to the auto scaling group on AWS EC2 based on the auto scaling group name and instance ID (s) you have specified.",
+      "description": "Attaches a running instance to the auto scaling group on AWS Commands based on the auto scaling group name and instance ID (s) you have specified.",
       "parameters": [
         {
           "title": "Assume a Role",
@@ -1442,8 +1442,8 @@
           "visible": true,
           "type": "text",
           "name": "autoscaling_group_name",
-          "tooltip": "Name of the auto scaling group to which you want to attach the specified instance on AWS EC2.",
-          "description": "Name of the auto scaling group to which you want to attach the specified instance on AWS EC2."
+          "tooltip": "Name of the auto scaling group to which you want to attach the specified instance on AWS Commands.",
+          "description": "Name of the auto scaling group to which you want to attach the specified instance on AWS Commands."
         },
         {
           "title": "Instance IDs (In CSV or List Format)",
@@ -1454,7 +1454,7 @@
           "name": "instance_id",
           "tooltip": "One or more security group IDs. You can give multiple group ids like \u0027i-000a15c1589bb38ec\u0027, \u0027i-0055c209fce039354\u0027 or [\u0027i-000a15c1589bb38ec\u0027, \u0027i-0055c209fce039354\u0027]",
           "placeholder": "e.g. [\u0027i-000a15c1589bb38ec\u0027, \u0027i-0055c209fce039354\u0027]",
-          "description": "ID(s) of the instance(s) that you want to attach to the specified auto scaling group using the CSV or list format on AWS EC2."
+          "description": "ID(s) of the instance(s) that you want to attach to the specified auto scaling group using the CSV or list format on AWS Commands."
         }
       ],
       "enabled": true,
@@ -1477,7 +1477,7 @@
       "title": "Detach Instance From Auto Scaling Group",
       "category": "miscellaneous",
       "annotation": "detach_instance",
-      "description": "Detaches an EC2 instance from the auto scaling group on AWS EC2 based on the auto scaling group name and instance ID (s) you have specified.",
+      "description": "Detaches an EC2 instance from the auto scaling group on AWS Commands based on the auto scaling group name and instance ID (s) you have specified.",
       "parameters": [
         {
           "title": "Assume a Role",
@@ -1542,8 +1542,8 @@
           "visible": true,
           "type": "text",
           "name": "autoscaling_group_name",
-          "tooltip": "Name of the auto scaling group from which you want to detach the specified instance on AWS EC2.",
-          "description": "Name of the auto scaling group from which you want to detach the specified instance on AWS EC2."
+          "tooltip": "Name of the auto scaling group from which you want to detach the specified instance on AWS Commands.",
+          "description": "Name of the auto scaling group from which you want to detach the specified instance on AWS Commands."
         },
         {
           "title": "Instance IDs",
@@ -1554,7 +1554,7 @@
           "name": "instance_id",
           "tooltip": "One or more security group IDs. You can give multiple group ids like \u0027i-000a15c1589bb38ec\u0027, \u0027i-0055c209fce039354\u0027 or [\u0027i-000a15c1589bb38ec\u0027, \u0027i-0055c209fce039354\u0027]",
           "placeholder": "e.g. [\u0027i-000a15c1589bb38ec\u0027, \u0027i-0055c209fce039354\u0027]",
-          "description": "ID of the instance that you want to detach from the specified auto scaling group on AWS EC2."
+          "description": "ID of the instance that you want to detach from the specified auto scaling group on AWS Commands."
         }
       ],
       "enabled": true,
@@ -1587,7 +1587,7 @@
     {
       "operation": "instance_api_termination",
       "title": "Instance API Termination ",
-      "description": "Terminates an instance on AWS EC2 using the REST API, if you have enabled this operation based on the instance ID and action you have specified.",
+      "description": "Terminates an instance on AWS Commands using the REST API, if you have enabled this operation based on the instance ID and action you have specified.",
       "parameters": [
         {
           "title": "Assume a Role",
@@ -1653,8 +1653,8 @@
           "type": "text",
           "name": "instance_id",
           "placeholder": "e.g. i-0055c209fce039354",
-          "tooltip": "ID of the instance that you want to terminate on AWS EC2 using the REST API.",
-          "description": "ID of the instance that you want to terminate on AWS EC2 using the REST API."
+          "tooltip": "ID of the instance that you want to terminate on AWS Commands using the REST API.",
+          "description": "ID of the instance that you want to terminate on AWS Commands using the REST API."
         },
         {
           "title": "Select Action",
@@ -1686,7 +1686,7 @@
       "title": "Terminate Instance",
       "category": "miscellaneous",
       "annotation": "terminate_instance",
-      "description": "Terminates an AWS EC2 instance you have specified using the instance ID.",
+      "description": "Terminates an AWS Commands instance you have specified using the instance ID.",
       "parameters": [
         {
           "title": "Assume a Role",
@@ -1752,8 +1752,8 @@
           "type": "text",
           "name": "instance_id",
           "placeholder": "e.g. i-0055c209fce039354",
-          "tooltip": "ID of the AWS EC2 instance that you want to terminate.",
-          "description": "ID of the AWS EC2 instance that you want to terminate."
+          "tooltip": "ID of the AWS Commands instance that you want to terminate.",
+          "description": "ID of the AWS Commands instance that you want to terminate."
         }
       ],
       "enabled": true,
@@ -1784,7 +1784,7 @@
       "title": "Attach Volume",
       "category": "miscellaneous",
       "annotation": "attach_volume",
-      "description": "Attaches a volume to an AWS EC2 instance based on the volume ID, Device Name, and instance ID you have specified.",
+      "description": "Attaches a volume to an AWS Commands instance based on the volume ID, Device Name, and instance ID you have specified.",
       "parameters": [
         {
           "title": "Assume a Role",
@@ -1850,8 +1850,8 @@
           "editable": true,
           "visible": true,
           "placeholder": "e.g vol-01b64709def6d3b01",
-          "tooltip": "ID of the volume that you want to attach to the specified instance on AWS EC2.",
-          "description": "ID of the volume that you want to attach to the specified instance on AWS EC2."
+          "tooltip": "ID of the volume that you want to attach to the specified instance on AWS Commands.",
+          "description": "ID of the volume that you want to attach to the specified instance on AWS Commands."
         },
         {
           "title": "Device Name",
@@ -1861,8 +1861,8 @@
           "editable": true,
           "visible": true,
           "placeholder": "e.g. /dev/sda1",
-          "description": "Name (or full path) of the device on the specified instance on AWS EC2. For example, /dev/sdh or xvdh.",
-          "tooltip": "Name (or full path) of the device on the specified instance on AWS EC2. For example, /dev/sdh or xvdh."
+          "description": "Name (or full path) of the device on the specified instance on AWS Commands. For example, /dev/sdh or xvdh.",
+          "tooltip": "Name (or full path) of the device on the specified instance on AWS Commands. For example, /dev/sdh or xvdh."
         },
         {
           "title": "Instance Id",
@@ -1872,8 +1872,8 @@
           "editable": true,
           "visible": true,
           "placeholder": "e.g. i-0055c209fce039354",
-          "description": "ID of the instance to which you want to attach the specified volume on AWS EC2.",
-          "tooltip": "ID of the instance to which you want to attach the specified volume on AWS EC2."
+          "description": "ID of the instance to which you want to attach the specified volume on AWS Commands.",
+          "tooltip": "ID of the instance to which you want to attach the specified volume on AWS Commands."
         }
       ],
       "enabled": true,
@@ -1902,7 +1902,7 @@
       "title": "Capture Volume Snapshot",
       "category": "miscellaneous",
       "annotation": "get_snapshot_volume",
-      "description": "Captures a snapshot of a volume on AWS EC2 based on the volume ID and volume description you have specified.",
+      "description": "Captures a snapshot of a volume on AWS Commands based on the volume ID and volume description you have specified.",
       "parameters": [
         {
           "title": "Assume a Role",
@@ -1968,8 +1968,8 @@
           "type": "text",
           "name": "volume_id",
           "placeholder": "e.g vol-01b64709def6d3b01",
-          "description": "ID of the volume on AWS EC2 for which you want to capture a snapshot.",
-          "tooltip": "ID of the volume on AWS EC2 for which you want to capture a snapshot."
+          "description": "ID of the volume on AWS Commands for which you want to capture a snapshot.",
+          "tooltip": "ID of the volume on AWS Commands for which you want to capture a snapshot."
         },
         {
           "title": "Volume Description",
@@ -1998,7 +1998,7 @@
       "title": "Detach Volume",
       "category": "remediation",
       "annotation": "detach_volume",
-      "description": "Detaches a volume from an AWS EC2 instance based on the volume ID, Device Name, and instance ID you have specified.",
+      "description": "Detaches a volume from an AWS Commands instance based on the volume ID, Device Name, and instance ID you have specified.",
       "parameters": [
         {
           "title": "Assume a Role",
@@ -2064,8 +2064,8 @@
           "editable": true,
           "visible": true,
           "placeholder": "e.g vol-01b64709def6d3b01",
-          "tooltip": "ID of the volume that you want to detach from the specified instance on AWS EC2.",
-          "description": "ID of the volume that you want to detach from the specified instance on AWS EC2."
+          "tooltip": "ID of the volume that you want to detach from the specified instance on AWS Commands.",
+          "description": "ID of the volume that you want to detach from the specified instance on AWS Commands."
         },
         {
           "title": "Device Name",
@@ -2075,8 +2075,8 @@
           "editable": true,
           "visible": true,
           "placeholder": "e.g. /dev/sda1",
-          "tooltip": "Name (or full path) of the device on the specified instance on AWS EC2. For example, /dev/sdh or xvdh.",
-          "description": "Name (or full path) of the device on the specified instance on AWS EC2. For example, /dev/sdh or xvdh."
+          "tooltip": "Name (or full path) of the device on the specified instance on AWS Commands. For example, /dev/sdh or xvdh.",
+          "description": "Name (or full path) of the device on the specified instance on AWS Commands. For example, /dev/sdh or xvdh."
         },
         {
           "title": "Instance ID",
@@ -2086,8 +2086,8 @@
           "editable": true,
           "visible": true,
           "placeholder": "e.g. i-0055c209fce039354",
-          "tooltip": "ID of the instance from which you want to detach the specified volume on AWS EC2.",
-          "description": "ID of the instance from which you want to detach the specified volume on AWS EC2."
+          "tooltip": "ID of the instance from which you want to detach the specified volume on AWS Commands.",
+          "description": "ID of the instance from which you want to detach the specified volume on AWS Commands."
         },
         {
           "title": "Force To Detach",
@@ -2097,8 +2097,8 @@
           "type": "checkbox",
           "name": "force",
           "value": false,
-          "tooltip": "Select this option if you want to forcefully detach the volume from the specified instance on AWS EC2.",
-          "description": "Select this option if you want to forcefully detach the volume from the specified instance on AWS EC2."
+          "tooltip": "Select this option if you want to forcefully detach the volume from the specified instance on AWS Commands.",
+          "description": "Select this option if you want to forcefully detach the volume from the specified instance on AWS Commands."
         }
       ],
       "enabled": true,
@@ -2193,8 +2193,8 @@
           "editable": true,
           "visible": true,
           "placeholder": "e.g vol-01b64709def6d3b01",
-          "tooltip": "ID of the volume that you want to delete on AWS EC2.",
-          "description": "ID of the volume that you want to delete on AWS EC2."
+          "tooltip": "ID of the volume that you want to delete on AWS Commands.",
+          "description": "ID of the volume that you want to delete on AWS Commands."
         }
       ],
       "enabled": true,
@@ -2212,7 +2212,7 @@
       "title": "Create Network ACL",
       "category": "containment",
       "annotation": "create_network_acl",
-      "description": "Creates a network ACL in AWS EC2 in the VPC you have specified.",
+      "description": "Creates a network ACL in AWS Commands in the VPC you have specified.",
       "parameters": [
         {
           "title": "Assume a Role",
@@ -2279,7 +2279,7 @@
           "name": "vpc_id",
           "placeholder": "e.g. vpc-a01106c2",
           "tooltip": "ID of the VPC in which you want to create network ACL.",
-          "description": "ID of the VPC in which you want to create the network ACL in AWS EC2."
+          "description": "ID of the VPC in which you want to create the network ACL in AWS Commands."
         }
       ],
       "enabled": true,
@@ -2331,7 +2331,7 @@
       "title": "Add Network ACL Rule",
       "category": "containment",
       "annotation": "add_rule",
-      "description": "Adds a rule to the network access control list (ACL) on AWS EC2 based on the network ACL ID, egress rule, and other input parameters you have specified.",
+      "description": "Adds a rule to the network access control list (ACL) on AWS Commands based on the network ACL ID, egress rule, and other input parameters you have specified.",
       "parameters": [
         {
           "title": "Assume a Role",
@@ -2397,8 +2397,8 @@
           "type": "text",
           "name": "network_acl_id",
           "placeholder": "e.g. acl-ac56f0c4",
-          "tooltip": "ID of the network in which you want to add the ACL rule on AWS EC2.",
-          "description": "ID of the network in which you want to add the ACL rule on AWS EC2."
+          "tooltip": "ID of the network in which you want to add the ACL rule on AWS Commands.",
+          "description": "ID of the network in which you want to add the ACL rule on AWS Commands."
         },
         {
           "title": "Egress Rule",
@@ -2422,8 +2422,8 @@
           "visible": true,
           "type": "text",
           "name": "ip_address",
-          "tooltip": "IP address of the network in which you want to add the ACL rule on AWS EC2.",
-          "description": "IP address of the network in which you want to add the ACL rule on AWS EC2."
+          "tooltip": "IP address of the network in which you want to add the ACL rule on AWS Commands.",
+          "description": "IP address of the network in which you want to add the ACL rule on AWS Commands."
         },
         {
           "title": "Rule Action",
@@ -2448,8 +2448,8 @@
           "type": "text",
           "name": "rule_number",
           "value": "",
-          "description": "Position of where the rule must be placed in the ACL rules on AWS EC2.Constraints: Positive integer from 1 to 32766",
-          "tooltip": "Position of where the rule must be placed in the ACL rules on AWS EC2.Constraints: Positive integer from 1 to 32766",
+          "description": "Position of where the rule must be placed in the ACL rules on AWS Commands.Constraints: Positive integer from 1 to 32766",
+          "tooltip": "Position of where the rule must be placed in the ACL rules on AWS Commands.Constraints: Positive integer from 1 to 32766",
           "validation": {
             "pattern": "^([1-9][0-9]{0,3}|[12][0-9]{4}|3[01][0-9]{3}|32[0-6][0-9]{2}|327[0-5][0-9]|3276[0-6])$",
             "patternError": "Value must be an integer in range 1 to 32766.",
@@ -2479,7 +2479,7 @@
       "title": "Get Details of Network ACLs",
       "category": "investigation",
       "annotation": "get_details_of_network_acls",
-      "description": "Retrieves details of one or more of your network ACLs from AWS EC2, based on the Network ACL IDs and filters you have specified. Note: If you do not specify any network ACL ID or any filter, then details of all the network ACLs are retrieved from AWS EC2.",
+      "description": "Retrieves details of one or more of your network ACLs from AWS Commands, based on the Network ACL IDs and filters you have specified. Note: If you do not specify any network ACL ID or any filter, then details of all the network ACLs are retrieved from AWS Commands.",
       "parameters": [
         {
           "title": "Assume a Role",
@@ -2546,7 +2546,7 @@
           "name": "network_acl_ids",
           "placeholder": "e.g. acl-ac56f0c4,acl-ac56f0c5",
           "tooltip": "IDs of the network in which you want to describe.",
-          "description": "IDs of the network ACL whose details you want to retrieve from AWS EC2. Note: If you do not specify and ID then details of all the Network ACLs are retrieved from AWS EC2."
+          "description": "IDs of the network ACL whose details you want to retrieve from AWS Commands. Note: If you do not specify and ID then details of all the Network ACLs are retrieved from AWS Commands."
         },
         {
           "title": "Filters",
@@ -2558,7 +2558,7 @@
           "value": "",
           "placeholder": "e.g. [{\u0027Name\u0027: \u0027vpc-id\u0027,\u0027Values\u0027: [\u0027vpc-a01106c2\u0027]}].",
           "tooltip": "Filters to describe Network ACLs. Format: [{\u0027Name\u0027: \u0027string\u0027,\u0027Values\u0027: [\u0027string\u0027]}]",
-          "description": "Filters based on which you want to retrieve details for network ACL from AWS EC2. Format of the filter is: [{\u0027Name\u0027: \u0027string\u0027,\u0027Values\u0027: [\u0027string\u0027]}] For example, [{\u0027Name\u0027: \u0027vpc-id\u0027,\u0027Values\u0027: [\u0027vpc-a01106c2\u0027]}]"
+          "description": "Filters based on which you want to retrieve details for network ACL from AWS Commands. Format of the filter is: [{\u0027Name\u0027: \u0027string\u0027,\u0027Values\u0027: [\u0027string\u0027]}] For example, [{\u0027Name\u0027: \u0027vpc-id\u0027,\u0027Values\u0027: [\u0027vpc-a01106c2\u0027]}]"
         }
       ],
       "enabled": true,
@@ -2607,7 +2607,7 @@
       "title": "Delete Network ACL Rule",
       "category": "containment",
       "annotation": "delete_network_acl_rule",
-      "description": "Deletes the network ACL from AWS EC2,  based on the network ACL ID, Egress rule, and rule number you have specified.",
+      "description": "Deletes the network ACL from AWS Commands,  based on the network ACL ID, Egress rule, and rule number you have specified.",
       "parameters": [
         {
           "title": "Assume a Role",
@@ -2673,8 +2673,8 @@
           "type": "text",
           "name": "network_acl_id",
           "placeholder": "e.g. acl-ac56f0c4",
-          "tooltip": "ID of the network from which you want to delete the ACL rule on AWS EC2.",
-          "description": "ID of the network from which you want to delete the ACL rule on AWS EC2."
+          "tooltip": "ID of the network from which you want to delete the ACL rule on AWS Commands.",
+          "description": "ID of the network from which you want to delete the ACL rule on AWS Commands."
         },
         {
           "title": "Egress Rule",
@@ -2700,7 +2700,7 @@
           "name": "rule_number",
           "value": "",
           "description": "The rule number of the entry to delete.Constraints: Positive integer from 1 to 32766",
-          "tooltip": "Rule number of the entry that you want to delete from AWS EC2. Constraint: You can enter only a positive integer from 1 to 32766 in this field.",
+          "tooltip": "Rule number of the entry that you want to delete from AWS Commands. Constraint: You can enter only a positive integer from 1 to 32766 in this field.",
           "validation": {
             "pattern": "^([1-9][0-9]{0,3}|[12][0-9]{4}|3[01][0-9]{3}|32[0-6][0-9]{2}|327[0-5][0-9]|3276[0-6])$",
             "patternError": "Value must be an integer in range 1 to 32766.",
@@ -2730,7 +2730,7 @@
       "title": "Delete Network ACL",
       "category": "containment",
       "annotation": "delete_network_acl",
-      "description": "Deletes the specified network ACL. from AWS EC2, based on the Network ACL ID you have specified.",
+      "description": "Deletes the specified network ACL. from AWS Commands, based on the Network ACL ID you have specified.",
       "parameters": [
         {
           "title": "Assume a Role",
@@ -2797,7 +2797,7 @@
           "name": "network_acl_id",
           "placeholder": "e.g. acl-5fb85d36",
           "tooltip": "The ID of the network ACL",
-          "description": "ID of the network ACL that you want to delete from AWS EC2."
+          "description": "ID of the network ACL that you want to delete from AWS Commands."
         }
       ],
       "enabled": true,
@@ -2821,7 +2821,7 @@
       "title": "Get User Details",
       "category": "investigation",
       "annotation": "get_user_info",
-      "description": "Retrieves details for a user you have specified, using the username from AWS EC2.",
+      "description": "Retrieves details for a user you have specified, using the username from AWS Commands.",
       "parameters": [
         {
           "title": "Assume a Role",
@@ -2886,8 +2886,8 @@
           "visible": true,
           "type": "text",
           "name": "username",
-          "tooltip": "Name of the user for whom you want to retrieve details from AWS EC2.",
-          "description": "Name of the user for whom you want to retrieve details from AWS EC2."
+          "tooltip": "Name of the user for whom you want to retrieve details from AWS Commands.",
+          "description": "Name of the user for whom you want to retrieve details from AWS Commands."
         }
       ],
       "enabled": true,
@@ -2905,7 +2905,7 @@
       "title": "Create Security Groups",
       "category": "containment",
       "annotation": "create_security_group",
-      "description": "Creates a new security group in the AWS EC2 service based on the group name and description you have specified.",
+      "description": "Creates a new security group in the AWS Commands service based on the group name and description you have specified.",
       "parameters": [
         {
           "title": "Assume a Role",
@@ -2970,8 +2970,8 @@
           "visible": true,
           "type": "text",
           "name": "group_name",
-          "tooltip": "Name of the new security group that you want to create on AWS EC2.",
-          "description": "Name of the new security group that you want to create on AWS EC2."
+          "tooltip": "Name of the new security group that you want to create on AWS Commands.",
+          "description": "Name of the new security group that you want to create on AWS Commands."
         },
         {
           "title": "Description",
@@ -2980,8 +2980,8 @@
           "visible": true,
           "type": "text",
           "name": "description",
-          "tooltip": "Description of the new security group that you want to create on AWS EC2.",
-          "description": "Description of the new security group that you want to create on AWS EC2."
+          "tooltip": "Description of the new security group that you want to create on AWS Commands.",
+          "description": "Description of the new security group that you want to create on AWS Commands."
         }
       ],
       "enabled": true,
@@ -3005,7 +3005,7 @@
       "title": "Get Security Groups",
       "category": "investigation",
       "annotation": "get_security_groups",
-      "description": "Retrieves details of all security groups from the AWS EC2 service.",
+      "description": "Retrieves details of all security groups from the AWS Commands service.",
       "parameters": [
         {
           "title": "Assume a Role",
@@ -3122,7 +3122,7 @@
       "title": "Get Details of Security Group",
       "category": "investigation",
       "annotation": "get_details_of_security_group",
-      "description": "Retrieves details of given security group from the AWS EC2 service.",
+      "description": "Retrieves details of given security group from the AWS Commands service.",
       "parameters": [
         {
           "title": "Assume a Role",
@@ -3249,7 +3249,7 @@
       "title": "Add Security Group To Instance",
       "category": "containment",
       "annotation": "add_group",
-      "description": "Adds a security group to an AWS EC2 instance based on the security group name(s) or ID(s) and instance ID you have specified.",
+      "description": "Adds a security group to an AWS Commands instance based on the security group name(s) or ID(s) and instance ID you have specified.",
       "parameters": [
         {
           "title": "Assume a Role",
@@ -3315,8 +3315,8 @@
           "type": "text",
           "name": "instance_id",
           "placeholder": "e.g. i-0055c209fce039354",
-          "tooltip": "ID of the instance that you want to add to the specified Security Group(s) on AWS EC2.",
-          "description": "ID of the instance that you want to add to the specified Security Group(s) on AWS EC2."
+          "tooltip": "ID of the instance that you want to add to the specified Security Group(s) on AWS Commands.",
+          "description": "ID of the instance that you want to add to the specified Security Group(s) on AWS Commands."
         },
         {
           "title": "Security Group Name or ID (In CSV or List Format)",
@@ -3327,7 +3327,7 @@
           "name": "group_list",
           "tooltip": "One or more security group IDs. You can give multiple group ids like \u0027sg-3578605d\u0027, \u0027sg-f1445c99\u0027 or [\u0027sg-3578605d\u0027, \u0027sg-f1445c99\u0027]",
           "placeholder": "e.g. [\u0027sg-3578605d\u0027, \u0027sg-f1445c99\u0027]",
-          "description": "Name(s) or ID(s) of the Security Group(s) to which you want to add the specified instance on AWS EC2. The Security Group ID(s) or Name(s) must be specified in the CSV or list format.For example, [\"default\", \"launch-wizard-3\", \"sg-9fc7dcf7\"]"
+          "description": "Name(s) or ID(s) of the Security Group(s) to which you want to add the specified instance on AWS Commands. The Security Group ID(s) or Name(s) must be specified in the CSV or list format.For example, [\"default\", \"launch-wizard-3\", \"sg-9fc7dcf7\"]"
         }
       ],
       "enabled": true,
@@ -3408,8 +3408,8 @@
           "type": "text",
           "name": "security_group_id",
           "placeholder": "e.g. sg-0a8231d74ab01d180",
-          "tooltip": "ID of the security group ID that you want to delete from AWS EC2.",
-          "description": "ID of the security group ID that you want to delete from AWS EC2."
+          "tooltip": "ID of the security group ID that you want to delete from AWS Commands.",
+          "description": "ID of the security group ID that you want to delete from AWS Commands."
         }
       ],
       "enabled": true,
@@ -3438,7 +3438,7 @@
       "title": "Authorize Ingress",
       "category": "containment",
       "annotation": "authorize_ingress",
-      "description": "Adds (authorizes) ingress rules to a security group on AWS EC2 based on the security group ID, CIDR IP value, and other input parameters you have specified.",
+      "description": "Adds (authorizes) ingress rules to a security group on AWS Commands based on the security group ID, CIDR IP value, and other input parameters you have specified.",
       "parameters": [
         {
           "title": "Assume a Role",
@@ -3504,8 +3504,8 @@
           "type": "text",
           "name": "security_group_id",
           "placeholder": "e.g. sg-0a8231d74ab01d180",
-          "tooltip": "ID of the security group ID on AWS EC2 in which you want to authorize (add) the ingress rule.",
-          "description": "ID of the security group ID on AWS EC2 in which you want to authorize (add) the ingress rule."
+          "tooltip": "ID of the security group ID on AWS Commands in which you want to authorize (add) the ingress rule.",
+          "description": "ID of the security group ID on AWS Commands in which you want to authorize (add) the ingress rule."
         },
         {
           "title": "IP Permissions",
@@ -3539,7 +3539,7 @@
       "title": "Authorize Egress",
       "category": "containment",
       "annotation": "authorize_egress",
-      "description": "Adds (authorizes) egress rules to a security group on AWS EC2 based on the security group ID, and IP permissions you have specified.",
+      "description": "Adds (authorizes) egress rules to a security group on AWS Commands based on the security group ID, and IP permissions you have specified.",
       "parameters": [
         {
           "title": "Assume a Role",
@@ -3605,8 +3605,8 @@
           "type": "text",
           "name": "security_group_id",
           "placeholder": "e.g. sg-0a8231d74ab01d180",
-          "tooltip": "ID of the security group ID on AWS EC2 in which you want to authorize (add) egress rules.",
-          "description": "ID of the security group ID on AWS EC2 in which you want to authorize (add) egress rules."
+          "tooltip": "ID of the security group ID on AWS Commands in which you want to authorize (add) egress rules.",
+          "description": "ID of the security group ID on AWS Commands in which you want to authorize (add) egress rules."
         },
         {
           "title": "IP Permissions",
@@ -3640,7 +3640,7 @@
       "title": "Revoke Egress",
       "category": "containment",
       "annotation": "revoke_egress",
-      "description": "Removes (revokes) egress rules from a security group on AWS EC2 based on the security group ID, and IP permissions you have specified.",
+      "description": "Removes (revokes) egress rules from a security group on AWS Commands based on the security group ID, and IP permissions you have specified.",
       "parameters": [
         {
           "title": "Assume a Role",
@@ -3705,8 +3705,8 @@
           "visible": true,
           "type": "text",
           "name": "security_group_id",
-          "tooltip": "ID of the security group ID on AWS EC2 from which you want to revoke (remove) egress rules.",
-          "description": "ID of the security group ID on AWS EC2 from which you want to revoke (remove) egress rules."
+          "tooltip": "ID of the security group ID on AWS Commands from which you want to revoke (remove) egress rules.",
+          "description": "ID of the security group ID on AWS Commands from which you want to revoke (remove) egress rules."
         },
         {
           "title": "IP Permissions",
@@ -3740,7 +3740,7 @@
       "title": "Revoke Ingress",
       "category": "containment",
       "annotation": "revoke_ingress",
-      "description": "Removes (revokes) ingress rules from a security group on AWS EC2 based on the security group ID, CIDR IP value, and other input parameters you have specified.",
+      "description": "Removes (revokes) ingress rules from a security group on AWS Commands based on the security group ID, CIDR IP value, and other input parameters you have specified.",
       "parameters": [
         {
           "title": "Assume a Role",
@@ -3806,8 +3806,8 @@
           "type": "text",
           "name": "security_group_id",
           "placeholder": "e.g. sg-0a8231d74ab01d180",
-          "tooltip": "ID of the security group ID on AWS EC2 from which you want to revoke (remove) the ingress rule.",
-          "description": "ID of the security group ID on AWS EC2 from which you want to revoke (remove) the ingress rule."
+          "tooltip": "ID of the security group ID on AWS Commands from which you want to revoke (remove) the ingress rule.",
+          "description": "ID of the security group ID on AWS Commands from which you want to revoke (remove) the ingress rule."
         },
         {
           "title": "IP Permissions",
