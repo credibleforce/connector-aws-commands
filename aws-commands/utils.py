@@ -143,9 +143,15 @@ def _get_cli_environment(config, params):
 def _run_aws_cli(aws_env, command, optional_parameters=""):
     try:
         # Execute the AWS CLI command
+        aws_cli_path = f"{os.path.dirname(os.path.realpath(__file__))}/packages/aws-cli/v2/2.18.13/dist/aws"
+        if optional_parameters:
+            command_line = [aws_cli_path] + \
+                command.split() + optional_parameters.split()
+        else:
+            command_line = [aws_cli_path] + command.split()
         result = subprocess.run(
             # Dynamically pass command args
-            ["aws"] + command.split() + optional_parameters.split(),
+            command_line,
             capture_output=True,
             text=True,
             check=False,  # Don't raise an exception for non-zero exit codes

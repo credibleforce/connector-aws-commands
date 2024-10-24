@@ -15,6 +15,7 @@ from .utils import _get_aws_client, _change_date_format, _is_mfa_device, _get_us
 logger = get_logger('aws-commands')
 TEMP_CRED_ENDPOINT = 'http://169.254.169.254/latest/meta-data/iam/security-credentials/{}'
 
+
 def generic_command(config, params):
     try:
         aws_env = _get_cli_environment(config, params)
