@@ -5,9 +5,9 @@
   "publisher": "Fortinet",
   "cs_approved": true,
   "cs_compatible": true,
-  "version": "1.0.0",
+  "version": "1.1.0",
   "category": "AWS Service",
-  "help_online": "https://docs.fortinet.com/document/fortisoar/1.0.0/aws-ec2/88/aws-commands-v1-0-0",
+  "help_online": "https://docs.fortinet.com/document/fortisoar/1.1.0/aws-commands/88/aws-commands-v1-0-0",
   "icon_small_name": "AWS_small.png",
   "icon_large_name": "AWS_large.png",
   "configuration": {
