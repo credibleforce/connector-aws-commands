@@ -1,2 +1,6 @@
-    boto3==1.5.8
-    awscli
+# Add Python Dependencies
+boto3==1.5.8
+awscli @ https://github.com/aws/aws-cli/archive/refs/tags/1.14.46.zip 
+colorama 
+rsa
+pyyaml           
