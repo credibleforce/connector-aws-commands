@@ -1,5 +1,5 @@
 {
-  "name": "aws-commands",
+  "name": "aws-cli-commands",
   "label": "AWS Commands",
   "description": "AWS Commands are used to run AWS native commands for AWS resources configurations directly from FortiSOAR.",
   "publisher": "Fortinet",
