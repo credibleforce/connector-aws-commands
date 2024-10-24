@@ -3,7 +3,7 @@
   "data": [
     {
       "@type": "WorkflowCollection",
-      "name": "Sample - AWS Commands - 3.1.1",
+      "name": "Sample - AWS Commands - 1.0.0",
       "description": "Sample playbooks for \"AWS Commands\" connector. If you are planning to use any of the sample playbooks in your environment, ensure that you clone those playbooks and move them to a different collection, since the sample playbook collection gets deleted during connector upgrade and delete.",
       "visible": true,
       "image": "/api/3/images/5aebaa18-a6b8-416a-b8be-f5d61f4b6111",
@@ -39,7 +39,7 @@
                   "device_name": "/dev/xvda",
                   "instance_id": "i-0a5c62c1ef779bb6f"
                 },
-                "version": "3.1.1",
+                "version": "1.0.0",
                 "connector": "aws",
                 "operation": "detach_volume",
                 "operationTitle": "Detach Volume To Instance",
@@ -190,7 +190,7 @@
                   "instance_id": "i-070b5e78490923c1e",
                   "autoscaling_group_name": "test"
                 },
-                "version": "3.1.1",
+                "version": "1.0.0",
                 "connector": "aws",
                 "operation": "detach_instance_from_autoscaling_group",
                 "operationTitle": "Detach Instance From Auto Scaling Group",
@@ -289,7 +289,7 @@
                   "instance_id": "['i-070b5e78490923c1e']",
                   "autoscaling_group_name": "test"
                 },
-                "version": "3.1.1",
+                "version": "1.0.0",
                 "connector": "aws",
                 "operation": "attach_instance_to_auto_scaling_group",
                 "operationTitle": "Attach Instance To Auto Scaling Group",
@@ -350,7 +350,7 @@
                   "assume_role": "",
                   "instance_id": "i-070b5e78490923c1e"
                 },
-                "version": "3.1.1",
+                "version": "1.0.0",
                 "connector": "aws",
                 "operation": "reboot_instance",
                 "operationTitle": "Reboot Instance",
@@ -481,7 +481,7 @@
                   "assume_role": "",
                   "instance_id": "i-0a5c62c1ef779bb6f"
                 },
-                "version": "3.1.1",
+                "version": "1.0.0",
                 "connector": "aws",
                 "operation": "stop_instance",
                 "operationTitle": "Stop Instance",
@@ -566,7 +566,7 @@
                   "ip_permissions": "[{\"IpProtocol\": \"-1\", \"IpRanges\": [{\"CidrIp\": \"0.0.0.0/0\"}], \"Ipv6Ranges\": [], \"PrefixListIds\": [], \"UserIdGroupPairs\": []}]",
                   "security_group_id": "sg-0d8315d0baf8ac704"
                 },
-                "version": "3.1.1",
+                "version": "1.0.0",
                 "connector": "aws",
                 "operation": "revoke_ingress",
                 "operationTitle": "Revoke Ingress",
@@ -696,7 +696,7 @@
                   "assume_role": "",
                   "instance_id": "i-070b5e78490923c1e"
                 },
-                "version": "3.1.1",
+                "version": "1.0.0",
                 "connector": "aws",
                 "operation": "deregister_instance_from_elb",
                 "operationTitle": "Deregister Instance from ELB",
@@ -767,7 +767,7 @@
                   "Executable Users": "[]",
                   "executable_users": "[]"
                 },
-                "version": "3.1.1",
+                "version": "1.0.0",
                 "connector": "aws",
                 "operation": "get_details_for_all_images",
                 "operationTitle": "Get Details for All Images",
@@ -874,7 +874,7 @@
                   "device_name": "/dev/sda1",
                   "instance_id": "i-0a5c62c1ef779bb6f"
                 },
-                "version": "3.1.1",
+                "version": "1.0.0",
                 "connector": "aws",
                 "operation": "attach_volume",
                 "operationTitle": "Attach Volume To Instance",
@@ -992,7 +992,7 @@
                   "assume_role": "",
                   "instance_id": "i-070b5e78490923c1e"
                 },
-                "version": "3.1.1",
+                "version": "1.0.0",
                 "connector": "aws",
                 "operation": "add_tag_to_instance",
                 "operationTitle": "Add Tag to Instance",
@@ -1100,7 +1100,7 @@
                   "security_groups_list": "",
                   "delete_on_termination": false
                 },
-                "version": "3.1.1",
+                "version": "1.0.0",
                 "connector": "aws",
                 "operation": "launch_instance",
                 "operationTitle": "Launch New Instance",
@@ -1240,7 +1240,7 @@
                   "assume_role": false,
                   "network_acl_id": "acl-06f21b95a285e86a6"
                 },
-                "version": "3.1.1",
+                "version": "1.0.0",
                 "connector": "aws",
                 "operation": "delete_network_acl",
                 "operationTitle": "Delete Network ACL",
@@ -1330,7 +1330,7 @@
                   "rule_number": 1,
                   "network_acl_id": "acl-0930e2b07d3b6cd5d"
                 },
-                "version": "3.1.1",
+                "version": "1.0.0",
                 "connector": "aws",
                 "operation": "delete_network_acl_rule",
                 "operationTitle": "Delete Network ACL Rule",
@@ -1428,7 +1428,7 @@
                   "assume_role": "",
                   "instance_id": "i-070b5e78490923c1e"
                 },
-                "version": "3.1.1",
+                "version": "1.0.0",
                 "connector": "aws",
                 "operation": "add_security_group_to_instance",
                 "operationTitle": "Add Security Group to Instance",
@@ -1492,7 +1492,7 @@
                   "assume_role": false,
                   "security_group_id": "sg-0d8315d0baf8ac704"
                 },
-                "version": "3.1.1",
+                "version": "1.0.0",
                 "connector": "aws",
                 "operation": "get_details_of_security_group",
                 "operationTitle": "Get Details of Security Group",
@@ -1613,7 +1613,7 @@
                   "assume_role": false,
                   "network_acl_ids": ""
                 },
-                "version": "3.1.1",
+                "version": "1.0.0",
                 "connector": "aws",
                 "operation": "describe_network_acls",
                 "operationTitle": "Get Details of Network ACLs",
@@ -1710,7 +1710,7 @@
                   "assume_role": "",
                   "security_group_id": "sg-0e3d4bd5c5c712f6c"
                 },
-                "version": "3.1.1",
+                "version": "1.0.0",
                 "connector": "aws",
                 "operation": "delete_security_group",
                 "operationTitle": "Delete Security Groups",
@@ -1806,7 +1806,7 @@
                   "assume_role": "",
                   "instance_id": "i-070b5e78490923c1e"
                 },
-                "version": "3.1.1",
+                "version": "1.0.0",
                 "connector": "aws",
                 "operation": "register_instance_to_elb",
                 "operationTitle": "Register Instance To ELB",
@@ -1867,7 +1867,7 @@
                   "username": "csadmin",
                   "assume_role": ""
                 },
-                "version": "3.1.1",
+                "version": "1.0.0",
                 "connector": "aws",
                 "operation": "describe_user",
                 "operationTitle": "Describe User",
@@ -2000,7 +2000,7 @@
                   "description": "Start Instance",
                   "instance_id": "i-0bc93dedba04c8625"
                 },
-                "version": "3.1.1",
+                "version": "1.0.0",
                 "connector": "aws",
                 "operation": "start_instance",
                 "operationTitle": "Start Instance",
@@ -2215,7 +2215,7 @@
                   "source_security_group_name": "",
                   "source_security_group_owner_id": ""
                 },
-                "version": "3.1.1",
+                "version": "1.0.0",
                 "connector": "aws",
                 "operation": "authorize_egress",
                 "operationTitle": "Authorize Egress",
@@ -2314,7 +2314,7 @@
                   "rule_number": 1,
                   "network_acl_id": "acl-0930e2b07d3b6cd5d"
                 },
-                "version": "3.1.1",
+                "version": "1.0.0",
                 "connector": "aws",
                 "operation": "add_network_acl_rule",
                 "operationTitle": "Add Network ACL Rule",
@@ -2380,7 +2380,7 @@
                   "source_security_group_name": "",
                   "source_security_group_owner_id": ""
                 },
-                "version": "3.1.1",
+                "version": "1.0.0",
                 "connector": "aws",
                 "operation": "revoke_egress",
                 "operationTitle": "Revoke Egress",
@@ -2475,7 +2475,7 @@
                   "volume_id": "vol-0cbe1143aeed8ba33",
                   "assume_role": ""
                 },
-                "version": "3.1.1",
+                "version": "1.0.0",
                 "connector": "aws",
                 "operation": "delete_volume",
                 "operationTitle": "Delete Volume",
@@ -2581,7 +2581,7 @@
                   "assume_role": "",
                   "instance_id": "i-070b5e78490923c1e"
                 },
-                "version": "3.1.1",
+                "version": "1.0.0",
                 "connector": "aws",
                 "operation": "instance_api_termination",
                 "operationTitle": "Instance API Termination",
@@ -2686,7 +2686,7 @@
                   "assume_role": "",
                   "instance_id": "i-0a5c62c1ef779bb6f"
                 },
-                "version": "3.1.1",
+                "version": "1.0.0",
                 "connector": "aws",
                 "operation": "terminate_instance",
                 "operationTitle": "Terminate Instance",
@@ -2839,7 +2839,7 @@
                   "ip_permissions": "[{\"IpProtocol\": \"-1\", \"IpRanges\": [{\"CidrIp\": \"0.0.0.0/0\"}], \"Ipv6Ranges\": [], \"PrefixListIds\": [], \"UserIdGroupPairs\": []}]",
                   "security_group_id": "sg-0d8315d0baf8ac704"
                 },
-                "version": "3.1.1",
+                "version": "1.0.0",
                 "connector": "aws",
                 "operation": "authorize_ingress",
                 "operationTitle": "Authorize Ingress",
@@ -2900,7 +2900,7 @@
                   "assume_role": "",
                   "instance_id": "i-070b5e78490923c1e"
                 },
-                "version": "3.1.1",
+                "version": "1.0.0",
                 "connector": "aws",
                 "operation": "describe_instance",
                 "operationTitle": "Describe Instance",
@@ -2999,7 +2999,7 @@
                   "assume_role": "",
                   "description": "taking snapshot"
                 },
-                "version": "3.1.1",
+                "version": "1.0.0",
                 "connector": "aws",
                 "operation": "snapshot_volume",
                 "operationTitle": "Capture Volume Snapshot",
@@ -3132,7 +3132,7 @@
                   "assume_role": "",
                   "description": "Creating security group by CyOPs playbook"
                 },
-                "version": "3.1.1",
+                "version": "1.0.0",
                 "connector": "aws",
                 "operation": "create_security_group",
                 "operationTitle": "Create Security Groups",
@@ -3220,7 +3220,7 @@
                   "vpc_id": "vpc-f29a2899",
                   "assume_role": false
                 },
-                "version": "3.1.1",
+                "version": "1.0.0",
                 "connector": "aws",
                 "operation": "create_network_acl",
                 "operationTitle": "Create Network ACL",
