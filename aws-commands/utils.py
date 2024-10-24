@@ -15,6 +15,7 @@ from connectors.core.connector import get_logger, ConnectorError
 logger = get_logger('aws-commands')
 TEMP_CRED_ENDPOINT = 'http://169.254.169.254/latest/meta-data/iam/security-credentials/{}'
 
+
 def _change_date_format(obj):
     if isinstance(obj, datetime.datetime):
         return obj.isoformat()
@@ -58,6 +59,7 @@ def _assume_a_role(data, params, aws_region):
         logger.exception(Err)
         raise ConnectorError(Err)
 
+
 def _get_session(config, params):
     try:
         config_type = config.get('config_type')
@@ -99,6 +101,7 @@ def _get_aws_client(config, params, service):
         logger.exception(Err)
         raise ConnectorError(Err)
 
+
 def _get_cli_environment(config, params):
     try:
         # Step 1: Create a boto3 session (this could be an assumed role session)
@@ -136,12 +139,13 @@ def _get_cli_environment(config, params):
         logger.exception(Err)
         raise ConnectorError(Err)
 
+
 def _run_aws_cli(aws_env, command, optional_parameters=""):
     try:
         # Execute the AWS CLI command
-        logger.info("helloworld")
         result = subprocess.run(
-            ["aws"] + command.split() + optional_parameters.split(),  # Dynamically pass command args
+            # Dynamically pass command args
+            ["aws"] + command.split() + optional_parameters.split(),
             capture_output=True,
             text=True,
             check=False,  # Don't raise an exception for non-zero exit codes
@@ -153,7 +157,8 @@ def _run_aws_cli(aws_env, command, optional_parameters=""):
             result_dict = json.loads(result.stdout)
 
             # Update datetime format
-            result_dict = json.dumps(result_dict, default=_change_date_format, indent=4)
+            result_dict = json.dumps(
+                result_dict, default=_change_date_format, indent=4)
             print(result_dict)
             result_dict = json.loads(result_dict)
 
@@ -173,6 +178,7 @@ def _run_aws_cli(aws_env, command, optional_parameters=""):
             'result_dict': None,
             'log': str(e)
         }
+
 
 def _get_policy_roles(aws_client, policy_role_list):
     try:
